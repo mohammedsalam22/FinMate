@@ -1,0 +1,159 @@
+{
+  "@@locale": "en",
+  "appTitle": "FinMate",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "transactions": "Transactions",
+  "@transactions": {
+    "description": "Label for transactions navigation and screen"
+  },
+  "debts": "Debts",
+  "@debts": {
+    "description": "Label for debts navigation and screen"
+  },
+  "analytics": "Analytics",
+  "@analytics": {
+    "description": "Label for analytics navigation and screen"
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "Label for settings navigation and screen"
+  },
+  "totalIncome": "Total Income",
+  "@totalIncome": {
+    "description": "Label for total income display"
+  },
+  "totalExpense": "Total Expense",
+  "@totalExpense": {
+    "description": "Label for total expense display"
+  },
+  "expenseBreakdown": "Expense Breakdown",
+  "@expenseBreakdown": {
+    "description": "Label for expense breakdown section"
+  },
+  "recentTransactions": "Recent Transactions",
+  "@recentTransactions": {
+    "description": "Label for recent transactions section"
+  },
+  "noTransactionsYet": "No transactions yet",
+  "@noTransactionsYet": {
+    "description": "Message shown when no transactions exist"
+  },
+  "tapToAddFirstTransaction": "Tap + to add your first transaction",
+  "@tapToAddFirstTransaction": {
+    "description": "Instruction to add first transaction"
+  },
+  "addDebt": "Add Debt",
+  "@addDebt": {
+    "description": "Title for add debt screen"
+  },
+  "editDebt": "Edit Debt",
+  "@editDebt": {
+    "description": "Title for edit debt screen"
+  },
+  "debtorName": "Debtor name",
+  "@debtorName": {
+    "description": "Label for debtor name field"
+  },
+  "enterName": "Enter a name",
+  "@enterName": {
+    "description": "Validation message for name field"
+  },
+  "totalAmount": "Total amount",
+  "@totalAmount": {
+    "description": "Label for total amount field"
+  },
+  "nameExample": "e.g. John Doe",
+  "@nameExample": {
+    "description": "Example text for name field"
+  },
+  "createNewCategory": "Create New Category",
+  "@createNewCategory": {
+    "description": "Title for create category dialog"
+  },
+  "categoryName": "Category Name",
+  "@categoryName": {
+    "description": "Label for category name field"
+  },
+  "enterCategoryName": "Please enter a category name",
+  "@enterCategoryName": {
+    "description": "Validation message for category name"
+  },
+  "nameMinLength": "Name must be at least 2 characters",
+  "@nameMinLength": {
+    "description": "Validation message for minimum name length"
+  },
+  "categoryExample": "e.g., Cafeteria, Work, Personal",
+  "@categoryExample": {
+    "description": "Example text for category name field"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel button label"
+  },
+  "create": "Create",
+  "@create": {
+    "description": "Create button label"
+  },
+  "save": "Save",
+  "@save": {
+    "description": "Save button label"
+  },
+  "delete": "Delete",
+  "@delete": {
+    "description": "Delete button label"
+  },
+  "success": "Success",
+  "@success": {
+    "description": "Success message"
+  },
+  "error": "Error",
+  "@error": {
+    "description": "Error message title"
+  },
+  "noDebtsYet": "No debts recorded yet",
+  "@noDebtsYet": {
+    "description": "Message shown when no debts exist"
+  },
+  "addFirstDebt": "Add your first debt to get started",
+  "@addFirstDebt": {
+    "description": "Instruction to add first debt"
+  },
+  "appearance": "Appearance",
+  "@appearance": {
+    "description": "Appearance settings section"
+  },
+  "language": "Language",
+  "@language": {
+    "description": "Language settings section"
+  },
+  "lightMode": "Light Mode",
+  "@lightMode": {
+    "description": "Light theme option"
+  },
+  "darkMode": "Dark Mode",
+  "@darkMode": {
+    "description": "Dark theme option"
+  },
+  "systemDefault": "System Default",
+  "@systemDefault": {
+    "description": "System theme option"
+  },
+  "english": "English",
+  "@english": {
+    "description": "English language option"
+  },
+  "arabic": "العربية",
+  "@arabic": {
+    "description": "Arabic language option"
+  },
+  "about": "About",
+  "@about": {
+    "description": "About section"
+  },
+  "version": "Version",
+  "@version": {
+    "description": "Version label"
+  }
+}
