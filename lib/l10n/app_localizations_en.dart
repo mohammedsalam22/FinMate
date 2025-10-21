@@ -444,4 +444,28 @@ class AppLocalizationsEn extends AppLocalizations {
   String errorCreatingCategory(String error) {
     return 'Error creating category: $error';
   }
+
+  @override
+  String get timelineView => 'Timeline View';
+
+  @override
+  String get tableView => 'Table View';
+
+  @override
+  String get date => 'Date';
+
+  @override
+  String get type => 'Type';
+
+  @override
+  String get debtCreated => 'Debt Created';
+
+  @override
+  String get payment => 'Payment';
+
+  @override
+  String get balance => 'Balance';
+
+  @override
+  String get notes => 'Notes';
 }

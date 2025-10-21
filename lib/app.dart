@@ -8,11 +8,11 @@ import 'package:pocketsage/features/transactions/add_transaction_screen.dart';
 import 'package:pocketsage/features/transactions/transactions_list_screen.dart';
 import 'package:pocketsage/features/analytics/analytics_screen.dart';
 import 'package:pocketsage/features/settings/settings_screen.dart';
-import 'package:pocketsage/features/debts/debts_list_screen.dart';
-import 'package:pocketsage/features/debts/add_edit_debt_screen.dart';
-import 'package:pocketsage/features/debts/debt_timeline_screen.dart';
-import 'package:pocketsage/features/debts/category_details_screen.dart';
-import 'package:pocketsage/features/debts/person_timeline_screen.dart';
+import 'package:pocketsage/features/debts/debts_list/debts_list_screen.dart';
+import 'package:pocketsage/features/debts/add_edit_debt/add_edit_debt_screen.dart';
+import 'package:pocketsage/features/debts/debt_timeline/debt_timeline_screen.dart';
+import 'package:pocketsage/features/debts/category_details/category_details_screen.dart';
+import 'package:pocketsage/features/debts/person_timeline/person_timeline_screen.dart';
 import 'package:pocketsage/core/theme/theme.dart';
 
 class FinMateApp extends ConsumerWidget {

@@ -889,6 +889,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Error creating category: {error}'**
   String errorCreatingCategory(String error);
+
+  /// Timeline view option
+  ///
+  /// In en, this message translates to:
+  /// **'Timeline View'**
+  String get timelineView;
+
+  /// Table view option
+  ///
+  /// In en, this message translates to:
+  /// **'Table View'**
+  String get tableView;
+
+  /// Date column header
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get date;
+
+  /// Type column header
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get type;
+
+  /// Debt created event label
+  ///
+  /// In en, this message translates to:
+  /// **'Debt Created'**
+  String get debtCreated;
+
+  /// Payment event label
+  ///
+  /// In en, this message translates to:
+  /// **'Payment'**
+  String get payment;
+
+  /// Balance label
+  ///
+  /// In en, this message translates to:
+  /// **'Balance'**
+  String get balance;
+
+  /// Notes label
+  ///
+  /// In en, this message translates to:
+  /// **'Notes'**
+  String get notes;
 }
 
 class _AppLocalizationsDelegate

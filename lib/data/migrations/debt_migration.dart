@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:pocketsage/core/constants/constants.dart';
@@ -68,9 +69,9 @@ class DebtMigration {
       // Mark migration as completed
       await prefs.setBool(_migrationKey, true);
 
-      print('Debt categories migration completed successfully');
+      debugPrint('Debt categories migration completed successfully');
     } catch (e) {
-      print('Error during debt categories migration: $e');
+      debugPrint('Error during debt categories migration: $e');
       // Don't mark as completed if there was an error
     }
   }

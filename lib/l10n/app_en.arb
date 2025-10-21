@@ -622,5 +622,37 @@
         "type": "String"
       }
     }
+  },
+  "timelineView": "Timeline View",
+  "@timelineView": {
+    "description": "Timeline view option"
+  },
+  "tableView": "Table View",
+  "@tableView": {
+    "description": "Table view option"
+  },
+  "date": "Date",
+  "@date": {
+    "description": "Date column header"
+  },
+  "type": "Type",
+  "@type": {
+    "description": "Type column header"
+  },
+  "debtCreated": "Debt Created",
+  "@debtCreated": {
+    "description": "Debt created event label"
+  },
+  "payment": "Payment",
+  "@payment": {
+    "description": "Payment event label"
+  },
+  "balance": "Balance",
+  "@balance": {
+    "description": "Balance label"
+  },
+  "notes": "Notes",
+  "@notes": {
+    "description": "Notes label"
   }
 }

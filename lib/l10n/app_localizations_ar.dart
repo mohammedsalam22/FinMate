@@ -441,4 +441,28 @@ class AppLocalizationsAr extends AppLocalizations {
   String errorCreatingCategory(String error) {
     return 'خطأ في إنشاء الفئة: $error';
   }
+
+  @override
+  String get timelineView => 'عرض الجدول الزمني';
+
+  @override
+  String get tableView => 'عرض الجدول';
+
+  @override
+  String get date => 'التاريخ';
+
+  @override
+  String get type => 'النوع';
+
+  @override
+  String get debtCreated => 'تم إنشاء الدين';
+
+  @override
+  String get payment => 'دفعة';
+
+  @override
+  String get balance => 'الرصيد';
+
+  @override
+  String get notes => 'ملاحظات';
 }
