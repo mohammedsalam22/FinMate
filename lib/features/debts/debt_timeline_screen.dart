@@ -6,6 +6,7 @@ import 'package:pocketsage/providers/providers.dart';
 import 'package:pocketsage/data/models/debt.dart';
 import 'package:pocketsage/core/theme/theme.dart';
 import 'package:pocketsage/features/debts/widgets/timeline_item.dart';
+import 'package:pocketsage/l10n/app_localizations.dart';
 import 'package:uuid/uuid.dart';
 
 class DebtTimelineScreen extends ConsumerStatefulWidget {
@@ -25,6 +26,7 @@ class _DebtTimelineScreenState extends ConsumerState<DebtTimelineScreen> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final l10n = AppLocalizations.of(context)!;
     final debtsRepo = ref.watch(debtsRepositoryProvider);
 
     // Handle loading debt by ID if needed
@@ -33,9 +35,9 @@ class _DebtTimelineScreenState extends ConsumerState<DebtTimelineScreen> {
 
     if (debt == null) {
       return Scaffold(
-        appBar: AppBar(title: const Text('Debt Timeline')),
-        body: const Center(
-          child: Text('Debt not found'),
+        appBar: AppBar(title: Text(l10n.debtTimeline)),
+        body: Center(
+          child: Text(l10n.debtNotFound),
         ),
       );
     }
@@ -80,7 +82,7 @@ class _DebtTimelineScreenState extends ConsumerState<DebtTimelineScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     _SummaryMetric(
-                      label: 'Total Amount',
+                      label: l10n.totalAmountValue,
                       value: debt.totalAmount,
                       isDark: isDark,
                     ),
@@ -90,7 +92,7 @@ class _DebtTimelineScreenState extends ConsumerState<DebtTimelineScreen> {
                       color: Colors.white.withValues(alpha: 0.3),
                     ),
                     _SummaryMetric(
-                      label: 'Paid',
+                      label: l10n.paid,
                       value: debt.paidAmount,
                       isDark: isDark,
                     ),
@@ -100,7 +102,7 @@ class _DebtTimelineScreenState extends ConsumerState<DebtTimelineScreen> {
                       color: Colors.white.withValues(alpha: 0.3),
                     ),
                     _SummaryMetric(
-                      label: 'Remaining',
+                      label: l10n.remaining,
                       value: debt.remainingAmount,
                       isDark: isDark,
                     ),
@@ -125,7 +127,7 @@ class _DebtTimelineScreenState extends ConsumerState<DebtTimelineScreen> {
                         ),
                         const SizedBox(width: 6),
                         Text(
-                          'Due: ${DateFormat('MMM d, yyyy').format(debt.dueDate!)}',
+                          '${l10n.due} ${DateFormat('MMM d, yyyy').format(debt.dueDate!)}',
                           style:
                               Theme.of(context).textTheme.bodyMedium?.copyWith(
                                     color: Colors.white.withValues(alpha: 0.9),
@@ -145,14 +147,14 @@ class _DebtTimelineScreenState extends ConsumerState<DebtTimelineScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'History',
+                  l10n.history,
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 if (debt.remainingAmount > 0.01)
                   TextButton.icon(
                     onPressed: _showAddPaymentDialog,
                     icon: const Icon(Icons.add),
-                    label: const Text('Add Payment'),
+                    label: Text(l10n.addPaymentButton),
                   ),
               ],
             ),
@@ -174,7 +176,7 @@ class _DebtTimelineScreenState extends ConsumerState<DebtTimelineScreen> {
                         ),
                         const SizedBox(height: 16),
                         Text(
-                          'No history yet',
+                          l10n.noHistoryYet,
                           style:
                               Theme.of(context).textTheme.titleMedium?.copyWith(
                                     color: isDark
@@ -184,7 +186,7 @@ class _DebtTimelineScreenState extends ConsumerState<DebtTimelineScreen> {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          'Payment history will appear here',
+                          l10n.paymentHistoryWillAppear,
                           style: Theme.of(context).textTheme.bodyMedium,
                         ),
                       ],
@@ -209,7 +211,7 @@ class _DebtTimelineScreenState extends ConsumerState<DebtTimelineScreen> {
           ? FloatingActionButton.extended(
               onPressed: _showAddPaymentDialog,
               icon: const Icon(Icons.payment),
-              label: const Text('Add Payment'),
+              label: Text(l10n.addPaymentButton),
               backgroundColor:
                   isDark ? AppColors.primaryLight : AppColors.primaryIndigo,
               foregroundColor: isDark ? AppColors.darkBackground : Colors.white,
@@ -219,6 +221,7 @@ class _DebtTimelineScreenState extends ConsumerState<DebtTimelineScreen> {
   }
 
   Future<void> _showAddPaymentDialog() async {
+    final l10n = AppLocalizations.of(context)!;
     final debt = widget.debt ??
         (widget.debtId != null
             ? ref.read(debtsRepositoryProvider).getById(widget.debtId!)
@@ -244,15 +247,15 @@ class _DebtTimelineScreenState extends ConsumerState<DebtTimelineScreen> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Add Payment',
+                Text(l10n.addPaymentButton,
                     style: Theme.of(context).textTheme.titleLarge),
                 const SizedBox(height: 16),
                 TextField(
                   controller: amountController,
                   keyboardType:
                       const TextInputType.numberWithOptions(decimal: true),
-                  decoration: const InputDecoration(
-                    labelText: 'Amount',
+                  decoration: InputDecoration(
+                    labelText: l10n.amount,
                     prefixText: '€ ',
                   ),
                 ),
@@ -285,8 +288,7 @@ class _DebtTimelineScreenState extends ConsumerState<DebtTimelineScreen> {
                 const SizedBox(height: 16),
                 TextField(
                   controller: notesController,
-                  decoration:
-                      const InputDecoration(labelText: 'Notes (Optional)'),
+                  decoration: InputDecoration(labelText: l10n.notesOptional),
                   maxLines: 2,
                 ),
                 const SizedBox(height: 24),
@@ -298,7 +300,7 @@ class _DebtTimelineScreenState extends ConsumerState<DebtTimelineScreen> {
                           double.tryParse(amountController.text.trim());
                       if (amount == null || amount <= 0) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Enter a valid amount')),
+                          SnackBar(content: Text(l10n.enterValidAmount)),
                         );
                         return;
                       }
@@ -324,7 +326,7 @@ class _DebtTimelineScreenState extends ConsumerState<DebtTimelineScreen> {
                         setState(() {}); // Refresh timeline
                       }
                     },
-                    child: const Text('Add Payment'),
+                    child: Text(l10n.addPaymentButton),
                   ),
                 ),
                 const SizedBox(height: 16),

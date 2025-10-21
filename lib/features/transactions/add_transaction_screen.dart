@@ -7,6 +7,7 @@ import 'package:pocketsage/providers/providers.dart';
 import 'package:pocketsage/data/models/category.dart';
 import 'package:pocketsage/data/models/transaction.dart';
 import 'package:pocketsage/core/theme/theme.dart';
+import 'package:pocketsage/l10n/app_localizations.dart';
 import 'package:uuid/uuid.dart';
 
 class AddTransactionScreen extends ConsumerStatefulWidget {
@@ -61,9 +62,10 @@ class _AddTransactionScreenState extends ConsumerState<AddTransactionScreen> {
   }
 
   Future<void> _saveTransaction() async {
+    final l10n = AppLocalizations.of(context)!;
     if (!_formKey.currentState!.validate() || _selectedCategory == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please fill all required fields')),
+        SnackBar(content: Text(l10n.fillAllRequiredFields)),
       );
       return;
     }
@@ -99,15 +101,17 @@ class _AddTransactionScreenState extends ConsumerState<AddTransactionScreen> {
       ref.invalidate(balanceSummaryProvider);
 
       if (mounted) {
+        final l10n = AppLocalizations.of(context)!;
         context.pop();
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Transaction added successfully')),
+          SnackBar(content: Text(l10n.transactionAddedSuccess)),
         );
       }
     } catch (e) {
       if (mounted) {
+        final l10n = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error adding transaction: ${e.toString()}')),
+          SnackBar(content: Text(l10n.errorAddingTransaction(e.toString()))),
         );
       }
     }
@@ -115,6 +119,7 @@ class _AddTransactionScreenState extends ConsumerState<AddTransactionScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final categories = ref.watch(categoriesProvider);
     final categoryRepo = ref.watch(categoryRepositoryProvider);
     final filteredCategories = categories
@@ -128,7 +133,7 @@ class _AddTransactionScreenState extends ConsumerState<AddTransactionScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Transaction'),
+        title: Text(l10n.addTransaction),
         leading: IconButton(
           icon: const Icon(Icons.close),
           onPressed: () => context.pop(),
@@ -172,7 +177,7 @@ class _AddTransactionScreenState extends ConsumerState<AddTransactionScreen> {
                                   left: Radius.circular(12)),
                             ),
                             child: Text(
-                              'Expense',
+                              l10n.expense,
                               textAlign: TextAlign.center,
                               style: Theme.of(context)
                                   .textTheme
@@ -205,7 +210,7 @@ class _AddTransactionScreenState extends ConsumerState<AddTransactionScreen> {
                                   right: Radius.circular(12)),
                             ),
                             child: Text(
-                              'Income',
+                              l10n.income,
                               textAlign: TextAlign.center,
                               style: Theme.of(context)
                                   .textTheme
@@ -226,7 +231,8 @@ class _AddTransactionScreenState extends ConsumerState<AddTransactionScreen> {
                   ),
                 ),
                 const SizedBox(height: 24),
-                Text('Amount', style: Theme.of(context).textTheme.titleMedium),
+                Text(l10n.amount,
+                    style: Theme.of(context).textTheme.titleMedium),
                 const SizedBox(height: 8),
                 TextFormField(
                   controller: _amountController,
@@ -242,17 +248,17 @@ class _AddTransactionScreenState extends ConsumerState<AddTransactionScreen> {
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter an amount';
+                      return l10n.pleaseEnterAmount;
                     }
                     if (double.tryParse(value) == null ||
                         double.parse(value) <= 0) {
-                      return 'Please enter a valid amount';
+                      return l10n.pleaseEnterValidAmount;
                     }
                     return null;
                   },
                 ),
                 const SizedBox(height: 24),
-                Text('Category',
+                Text(l10n.category,
                     style: Theme.of(context).textTheme.titleMedium),
                 const SizedBox(height: 12),
                 Wrap(
@@ -303,7 +309,7 @@ class _AddTransactionScreenState extends ConsumerState<AddTransactionScreen> {
                   }).toList(),
                 ),
                 const SizedBox(height: 24),
-                Text('Date & Time',
+                Text(l10n.dateAndTime,
                     style: Theme.of(context).textTheme.titleMedium),
                 const SizedBox(height: 8),
                 Row(
@@ -377,14 +383,14 @@ class _AddTransactionScreenState extends ConsumerState<AddTransactionScreen> {
                   ],
                 ),
                 const SizedBox(height: 24),
-                Text('Notes (Optional)',
+                Text(l10n.notesOptional,
                     style: Theme.of(context).textTheme.titleMedium),
                 const SizedBox(height: 8),
                 TextFormField(
                   controller: _notesController,
                   maxLines: 3,
-                  decoration: const InputDecoration(
-                    hintText: 'Add a note...',
+                  decoration: InputDecoration(
+                    hintText: l10n.addNote,
                   ),
                 ),
                 const SizedBox(height: 32),
@@ -392,9 +398,9 @@ class _AddTransactionScreenState extends ConsumerState<AddTransactionScreen> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: _saveTransaction,
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 4),
-                      child: Text('Save Transaction'),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 4),
+                      child: Text(l10n.saveTransaction),
                     ),
                   ),
                 ),

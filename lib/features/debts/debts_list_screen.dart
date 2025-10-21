@@ -4,6 +4,7 @@ import 'package:pocketsage/providers/providers.dart';
 import 'package:pocketsage/core/theme/theme.dart';
 import 'package:pocketsage/features/debts/debt_category_card.dart';
 import 'package:pocketsage/features/debts/widgets/quick_add_category_dialog.dart';
+import 'package:pocketsage/l10n/app_localizations.dart';
 
 class DebtsListScreen extends ConsumerWidget {
   const DebtsListScreen({super.key});
@@ -25,10 +26,11 @@ class DebtsListScreen extends ConsumerWidget {
     final summary = ref.watch(debtsSummaryProvider);
     final categories = ref.watch(debtCategoriesProvider);
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Debts'),
+        title: Text(l10n.debts),
       ),
       body: Column(
         children: [
@@ -55,7 +57,7 @@ class DebtsListScreen extends ConsumerWidget {
               children: [
                 Expanded(
                   child: _MetricTile(
-                    label: 'Owed',
+                    label: l10n.owed,
                     amount: summary['owed'] ?? 0,
                     isDark: isDark,
                   ),
@@ -63,7 +65,7 @@ class DebtsListScreen extends ConsumerWidget {
                 const SizedBox(width: 12),
                 Expanded(
                   child: _MetricTile(
-                    label: 'Paid',
+                    label: l10n.paid,
                     amount: summary['paid'] ?? 0,
                     isDark: isDark,
                   ),
@@ -71,7 +73,7 @@ class DebtsListScreen extends ConsumerWidget {
                 const SizedBox(width: 12),
                 Expanded(
                   child: _MetricTile(
-                    label: 'Remaining',
+                    label: l10n.remaining,
                     amount: summary['remaining'] ?? 0,
                     isDark: isDark,
                   ),
@@ -112,13 +114,13 @@ class DebtsListScreen extends ConsumerWidget {
           }
         },
         itemBuilder: (context) => [
-          const PopupMenuItem(
+          PopupMenuItem(
             value: 'category',
             child: Row(
               children: [
-                Icon(Icons.folder_open),
-                SizedBox(width: 12),
-                Text('Add Category'),
+                const Icon(Icons.folder_open),
+                const SizedBox(width: 12),
+                Text(l10n.addCategory),
               ],
             ),
           ),
@@ -171,12 +173,13 @@ class _MetricTile extends StatelessWidget {
   }
 }
 
-class _EmptyState extends StatelessWidget {
+class _EmptyState extends ConsumerWidget {
   final bool isDark;
   const _EmptyState({required this.isDark});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -191,7 +194,7 @@ class _EmptyState extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            'No debts yet',
+            l10n.noDebtsYet,
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   color: isDark
                       ? AppColors.darkTextSecondary
@@ -199,7 +202,7 @@ class _EmptyState extends StatelessWidget {
                 ),
           ),
           const SizedBox(height: 8),
-          Text('Tap + to add your first debt',
+          Text(l10n.tapToAddFirstDebt,
               style: Theme.of(context).textTheme.bodyMedium),
         ],
       ),

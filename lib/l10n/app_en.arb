@@ -155,5 +155,472 @@
   "version": "Version",
   "@version": {
     "description": "Version label"
+  },
+  "termsAndPrivacy": "Terms & Privacy",
+  "@termsAndPrivacy": {
+    "description": "Terms and privacy label"
+  },
+  "unknown": "Unknown",
+  "@unknown": {
+    "description": "Unknown label for missing items"
+  },
+  "noExpenseDataYet": "No expense data yet",
+  "@noExpenseDataYet": {
+    "description": "Message when there's no expense data"
+  },
+  "owed": "Owed",
+  "@owed": {
+    "description": "Amount owed label"
+  },
+  "paid": "Paid",
+  "@paid": {
+    "description": "Amount paid label"
+  },
+  "remaining": "Remaining",
+  "@remaining": {
+    "description": "Remaining amount label"
+  },
+  "addCategory": "Add Category",
+  "@addCategory": {
+    "description": "Add category button label"
+  },
+  "tapToAddFirstDebt": "Tap + to add your first debt",
+  "@tapToAddFirstDebt": {
+    "description": "Instruction to add first debt"
+  },
+  "savedSuccessfully": "Saved successfully",
+  "@savedSuccessfully": {
+    "description": "Success message after saving"
+  },
+  "enterAmount": "Enter an amount",
+  "@enterAmount": {
+    "description": "Validation message for amount field"
+  },
+  "enterValidAmount": "Enter a valid amount",
+  "@enterValidAmount": {
+    "description": "Validation message for invalid amount"
+  },
+  "dueDateOptional": "Due date (optional)",
+  "@dueDateOptional": {
+    "description": "Label for optional due date field"
+  },
+  "noDueDate": "No due date",
+  "@noDueDate": {
+    "description": "Text when no due date is set"
+  },
+  "notesOptional": "Notes (optional)",
+  "@notesOptional": {
+    "description": "Label for optional notes field"
+  },
+  "addNote": "Add a note...",
+  "@addNote": {
+    "description": "Hint text for notes field"
+  },
+  "payments": "Payments",
+  "@payments": {
+    "description": "Payments section label"
+  },
+  "addPayment": "Add payment",
+  "@addPayment": {
+    "description": "Add payment button label"
+  },
+  "createDebt": "Create Debt",
+  "@createDebt": {
+    "description": "Create debt button label"
+  },
+  "saveChanges": "Save Changes",
+  "@saveChanges": {
+    "description": "Save changes button label"
+  },
+  "categoryNotFound": "Category Not Found",
+  "@categoryNotFound": {
+    "description": "Error message when category is not found"
+  },
+  "categoryNotFoundText": "Category not found",
+  "@categoryNotFoundText": {
+    "description": "Error text when category is not found"
+  },
+  "deleteCategoryTitle": "Delete \"{name}\"",
+  "@deleteCategoryTitle": {
+    "description": "Title for delete category dialog",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteCategoryMessage": "This will permanently delete:",
+  "@deleteCategoryMessage": {
+    "description": "Delete category warning message"
+  },
+  "deleteCategoryItem": "• The category \"{name}\"",
+  "@deleteCategoryItem": {
+    "description": "Delete category item",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteDebtsCount": "• All {count} debts in this category",
+  "@deleteDebtsCount": {
+    "description": "Number of debts to be deleted",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "deletePaymentHistory": "• All payment history for these debts",
+  "@deletePaymentHistory": {
+    "description": "Payment history deletion warning"
+  },
+  "actionCannotBeUndone": "This action cannot be undone.",
+  "@actionCannotBeUndone": {
+    "description": "Warning that action is permanent"
+  },
+  "categoryDeletedSuccess": "Category \"{name}\" and all debts deleted",
+  "@categoryDeletedSuccess": {
+    "description": "Success message after deleting category",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "errorDeletingCategory": "Error deleting category: {error}",
+  "@errorDeletingCategory": {
+    "description": "Error message when deleting category fails",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "deletePersonTitle": "Delete \"{name}\"",
+  "@deletePersonTitle": {
+    "description": "Title for delete person dialog",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "deletePersonMessage": "This will permanently delete all debts for this person",
+  "@deletePersonMessage": {
+    "description": "Delete person warning message"
+  },
+  "deletePersonDebts": "• All debts for this person will be deleted",
+  "@deletePersonDebts": {
+    "description": "Delete person debts warning"
+  },
+  "deletePersonPayments": "• All payment history for these debts will be deleted",
+  "@deletePersonPayments": {
+    "description": "Delete person payments warning"
+  },
+  "personDeletedSuccess": "All debts for \"{name}\" deleted",
+  "@personDeletedSuccess": {
+    "description": "Success message after deleting person",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "errorDeletingPerson": "Error deleting person: {error}",
+  "@errorDeletingPerson": {
+    "description": "Error message when deleting person fails",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "totalDebts": "{count} Total Debts",
+  "@totalDebts": {
+    "description": "Total debts count",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "totalAmountLabel": "total amount",
+  "@totalAmountLabel": {
+    "description": "Total amount label"
+  },
+  "settled": "Settled",
+  "@settled": {
+    "description": "Settled status label"
+  },
+  "deleteCategory": "Delete Category",
+  "@deleteCategory": {
+    "description": "Delete category menu item"
+  },
+  "noPeopleInCategory": "No people in this category yet",
+  "@noPeopleInCategory": {
+    "description": "Empty state message for category"
+  },
+  "addFirstDebtToStart": "Add your first debt to get started",
+  "@addFirstDebtToStart": {
+    "description": "Instruction to add first debt"
+  },
+  "addFirstDebtButton": "Add First Debt",
+  "@addFirstDebtButton": {
+    "description": "Add first debt button"
+  },
+  "debtCount": "{count} debt",
+  "@debtCount": {
+    "description": "Single debt count",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "debtsCount": "{count} debts",
+  "@debtsCount": {
+    "description": "Multiple debts count",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "total": "total",
+  "@total": {
+    "description": "Total label"
+  },
+  "debtTimeline": "Debt Timeline",
+  "@debtTimeline": {
+    "description": "Debt timeline screen title"
+  },
+  "debtNotFound": "Debt not found",
+  "@debtNotFound": {
+    "description": "Error message when debt is not found"
+  },
+  "totalAmountValue": "Total Amount",
+  "@totalAmountValue": {
+    "description": "Total amount label in summary"
+  },
+  "due": "Due:",
+  "@due": {
+    "description": "Due date prefix"
+  },
+  "history": "History",
+  "@history": {
+    "description": "History section label"
+  },
+  "noHistoryYet": "No history yet",
+  "@noHistoryYet": {
+    "description": "Empty history message"
+  },
+  "paymentHistoryWillAppear": "Payment history will appear here",
+  "@paymentHistoryWillAppear": {
+    "description": "Empty history instruction"
+  },
+  "amount": "Amount",
+  "@amount": {
+    "description": "Amount field label"
+  },
+  "totalOwed": "Total Owed",
+  "@totalOwed": {
+    "description": "Total owed label"
+  },
+  "inCategory": "In {category}",
+  "@inCategory": {
+    "description": "Category context label",
+    "placeholders": {
+      "category": {
+        "type": "String"
+      }
+    }
+  },
+  "addDebtButton": "Add Debt",
+  "@addDebtButton": {
+    "description": "Add debt button label"
+  },
+  "addPaymentButton": "Add Payment",
+  "@addPaymentButton": {
+    "description": "Add payment button label"
+  },
+  "addFirstDebtOrPayment": "Add your first debt or payment to get started",
+  "@addFirstDebtOrPayment": {
+    "description": "Empty state instruction for timeline"
+  },
+  "personLabel": "Person: {name}",
+  "@personLabel": {
+    "description": "Person label with name",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dueDateOptionalLabel": "Due Date (Optional)",
+  "@dueDateOptionalLabel": {
+    "description": "Optional due date label"
+  },
+  "forPerson": "For: {name}",
+  "@forPerson": {
+    "description": "For person label",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "noRemainingDebt": "No remaining debt to pay",
+  "@noRemainingDebt": {
+    "description": "Message when there's no remaining debt"
+  },
+  "errorDeletingDebt": "Error deleting debt: {error}",
+  "@errorDeletingDebt": {
+    "description": "Error message when deleting debt fails",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "errorDeletingPayment": "Error deleting payment: {error}",
+  "@errorDeletingPayment": {
+    "description": "Error message when deleting payment fails",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "totalBalance": "Total Balance",
+  "@totalBalance": {
+    "description": "Total balance label"
+  },
+  "income": "Income",
+  "@income": {
+    "description": "Income label"
+  },
+  "expense": "Expense",
+  "@expense": {
+    "description": "Expense label"
+  },
+  "add": "Add",
+  "@add": {
+    "description": "Add button label"
+  },
+  "today": "Today",
+  "@today": {
+    "description": "Today label"
+  },
+  "yesterday": "Yesterday",
+  "@yesterday": {
+    "description": "Yesterday label"
+  },
+  "addTransaction": "Add Transaction",
+  "@addTransaction": {
+    "description": "Add transaction screen title"
+  },
+  "fillAllRequiredFields": "Please fill all required fields",
+  "@fillAllRequiredFields": {
+    "description": "Validation message for missing fields"
+  },
+  "transactionAddedSuccess": "Transaction added successfully",
+  "@transactionAddedSuccess": {
+    "description": "Success message after adding transaction"
+  },
+  "errorAddingTransaction": "Error adding transaction: {error}",
+  "@errorAddingTransaction": {
+    "description": "Error message when adding transaction fails",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "pleaseEnterAmount": "Please enter an amount",
+  "@pleaseEnterAmount": {
+    "description": "Validation message for empty amount"
+  },
+  "pleaseEnterValidAmount": "Please enter a valid amount",
+  "@pleaseEnterValidAmount": {
+    "description": "Validation message for invalid amount"
+  },
+  "category": "Category",
+  "@category": {
+    "description": "Category label"
+  },
+  "dateAndTime": "Date & Time",
+  "@dateAndTime": {
+    "description": "Date and time label"
+  },
+  "saveTransaction": "Save Transaction",
+  "@saveTransaction": {
+    "description": "Save transaction button label"
+  },
+  "color": "Color",
+  "@color": {
+    "description": "Color label"
+  },
+  "icon": "Icon",
+  "@icon": {
+    "description": "Icon label"
+  },
+  "iconFolder": "Folder",
+  "@iconFolder": {
+    "description": "Folder icon name"
+  },
+  "iconBusiness": "Business",
+  "@iconBusiness": {
+    "description": "Business icon name"
+  },
+  "iconHome": "Home",
+  "@iconHome": {
+    "description": "Home icon name"
+  },
+  "iconWork": "Work",
+  "@iconWork": {
+    "description": "Work icon name"
+  },
+  "iconSchool": "School",
+  "@iconSchool": {
+    "description": "School icon name"
+  },
+  "iconRestaurant": "Restaurant",
+  "@iconRestaurant": {
+    "description": "Restaurant icon name"
+  },
+  "iconHealth": "Health",
+  "@iconHealth": {
+    "description": "Health icon name"
+  },
+  "iconCar": "Car",
+  "@iconCar": {
+    "description": "Car icon name"
+  },
+  "iconShopping": "Shopping",
+  "@iconShopping": {
+    "description": "Shopping icon name"
+  },
+  "iconGames": "Games",
+  "@iconGames": {
+    "description": "Games icon name"
+  },
+  "categoryCreatedSuccess": "Category \"{name}\" created successfully!",
+  "@categoryCreatedSuccess": {
+    "description": "Success message after creating category",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "errorCreatingCategory": "Error creating category: {error}",
+  "@errorCreatingCategory": {
+    "description": "Error message when creating category fails",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
   }
 }

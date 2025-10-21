@@ -176,7 +176,7 @@ class SettingsScreen extends ConsumerWidget {
                 ),
                 _SettingsTile(
                   icon: Icons.description_outlined,
-                  title: 'Terms & Privacy',
+                  title: l10n.termsAndPrivacy,
                   trailing: Icon(
                     Icons.chevron_right,
                     color: isDark

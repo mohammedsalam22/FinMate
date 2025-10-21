@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocketsage/providers/providers.dart';
 import 'package:pocketsage/core/theme/theme.dart';
+import 'package:pocketsage/l10n/app_localizations.dart';
 
 class QuickAddCategoryDialog extends ConsumerStatefulWidget {
   final Function(String categoryId) onCategoryCreated;
@@ -37,16 +38,16 @@ class _QuickAddCategoryDialogState
   ];
 
   final List<Map<String, String>> _iconOptions = [
-    {'icon': 'folder_open', 'name': 'Folder'},
-    {'icon': 'business', 'name': 'Business'},
-    {'icon': 'home', 'name': 'Home'},
-    {'icon': 'work', 'name': 'Work'},
-    {'icon': 'school', 'name': 'School'},
-    {'icon': 'restaurant', 'name': 'Restaurant'},
-    {'icon': 'local_hospital', 'name': 'Health'},
-    {'icon': 'directions_car', 'name': 'Car'},
-    {'icon': 'shopping_cart', 'name': 'Shopping'},
-    {'icon': 'sports_esports', 'name': 'Games'},
+    {'icon': 'folder_open', 'name': 'iconFolder'},
+    {'icon': 'business', 'name': 'iconBusiness'},
+    {'icon': 'home', 'name': 'iconHome'},
+    {'icon': 'work', 'name': 'iconWork'},
+    {'icon': 'school', 'name': 'iconSchool'},
+    {'icon': 'restaurant', 'name': 'iconRestaurant'},
+    {'icon': 'local_hospital', 'name': 'iconHealth'},
+    {'icon': 'directions_car', 'name': 'iconCar'},
+    {'icon': 'shopping_cart', 'name': 'iconShopping'},
+    {'icon': 'sports_esports', 'name': 'iconGames'},
   ];
 
   @override
@@ -59,9 +60,10 @@ class _QuickAddCategoryDialogState
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final categoryRepo = ref.watch(debtCategoryRepositoryProvider);
+    final l10n = AppLocalizations.of(context)!;
 
     return AlertDialog(
-      title: const Text('Create New Category'),
+      title: Text(l10n.createNewCategory),
       content: Form(
         key: _formKey,
         child: SingleChildScrollView(
@@ -71,7 +73,7 @@ class _QuickAddCategoryDialogState
             children: [
               // Category Name
               Text(
-                'Category Name',
+                l10n.categoryName,
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
                       fontWeight: FontWeight.w600,
                     ),
@@ -79,15 +81,15 @@ class _QuickAddCategoryDialogState
               const SizedBox(height: 8),
               TextFormField(
                 controller: _nameController,
-                decoration: const InputDecoration(
-                  hintText: 'e.g., Cafeteria, Work, Personal',
+                decoration: InputDecoration(
+                  hintText: l10n.categoryExample,
                 ),
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
-                    return 'Please enter a category name';
+                    return l10n.enterCategoryName;
                   }
                   if (value.trim().length < 2) {
-                    return 'Name must be at least 2 characters';
+                    return l10n.nameMinLength;
                   }
                   return null;
                 },
@@ -97,7 +99,7 @@ class _QuickAddCategoryDialogState
 
               // Color Selection
               Text(
-                'Color',
+                l10n.color,
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
                       fontWeight: FontWeight.w600,
                     ),
@@ -145,7 +147,7 @@ class _QuickAddCategoryDialogState
 
               // Icon Selection
               Text(
-                'Icon',
+                l10n.icon,
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
                       fontWeight: FontWeight.w600,
                     ),
@@ -188,7 +190,7 @@ class _QuickAddCategoryDialogState
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            iconInfo['name']!,
+                            _getIconName(l10n, iconInfo['name']!),
                             style: Theme.of(context)
                                 .textTheme
                                 .bodySmall
@@ -213,7 +215,7 @@ class _QuickAddCategoryDialogState
       actions: [
         TextButton(
           onPressed: () => Navigator.of(context).pop(),
-          child: const Text('Cancel'),
+          child: Text(l10n.cancel),
         ),
         ElevatedButton(
           onPressed: () async {
@@ -234,8 +236,7 @@ class _QuickAddCategoryDialogState
                   Navigator.of(context).pop();
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text(
-                          'Category "${category.name}" created successfully!'),
+                      content: Text(l10n.categoryCreatedSuccess(category.name)),
                     ),
                   );
                 }
@@ -243,16 +244,43 @@ class _QuickAddCategoryDialogState
                 if (mounted) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text('Error creating category: ${e.toString()}'),
+                      content: Text(l10n.errorCreatingCategory(e.toString())),
                     ),
                   );
                 }
               }
             }
           },
-          child: const Text('Create'),
+          child: Text(l10n.create),
         ),
       ],
     );
+  }
+
+  String _getIconName(AppLocalizations l10n, String iconKey) {
+    switch (iconKey) {
+      case 'iconFolder':
+        return l10n.iconFolder;
+      case 'iconBusiness':
+        return l10n.iconBusiness;
+      case 'iconHome':
+        return l10n.iconHome;
+      case 'iconWork':
+        return l10n.iconWork;
+      case 'iconSchool':
+        return l10n.iconSchool;
+      case 'iconRestaurant':
+        return l10n.iconRestaurant;
+      case 'iconHealth':
+        return l10n.iconHealth;
+      case 'iconCar':
+        return l10n.iconCar;
+      case 'iconShopping':
+        return l10n.iconShopping;
+      case 'iconGames':
+        return l10n.iconGames;
+      default:
+        return iconKey;
+    }
   }
 }

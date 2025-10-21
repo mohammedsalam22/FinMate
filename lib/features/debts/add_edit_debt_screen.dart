@@ -100,9 +100,10 @@ class _AddEditDebtScreenState extends ConsumerState<AddEditDebtScreen> {
     ref.invalidate(debtsGroupedByCategoryProvider);
 
     if (mounted) {
+      final l10n = AppLocalizations.of(context)!;
       context.pop();
       ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text('Saved successfully')));
+          .showSnackBar(SnackBar(content: Text(l10n.savedSuccessfully)));
     }
   }
 
@@ -151,10 +152,10 @@ class _AddEditDebtScreenState extends ConsumerState<AddEditDebtScreen> {
                   decoration:
                       const InputDecoration(hintText: '0.00', prefixText: '€ '),
                   validator: (v) {
-                    if (v == null || v.isEmpty) return 'Enter an amount';
+                    if (v == null || v.isEmpty) return l10n.enterAmount;
                     final parsed = double.tryParse(v);
                     if (parsed == null || parsed <= 0)
-                      return 'Enter a valid amount';
+                      return l10n.enterValidAmount;
                     return null;
                   },
                 ),
@@ -168,7 +169,7 @@ class _AddEditDebtScreenState extends ConsumerState<AddEditDebtScreen> {
                   },
                 ),
                 const SizedBox(height: 20),
-                Text('Due date (optional)',
+                Text(l10n.dueDateOptional,
                     style: Theme.of(context).textTheme.titleMedium),
                 const SizedBox(height: 8),
                 InkWell(
@@ -196,7 +197,7 @@ class _AddEditDebtScreenState extends ConsumerState<AddEditDebtScreen> {
                                 : AppColors.primaryIndigo),
                         const SizedBox(width: 12),
                         Text(_dueDate == null
-                            ? 'No due date'
+                            ? l10n.noDueDate
                             : DateFormat('MMM d, yyyy').format(_dueDate!)),
                         const Spacer(),
                         if (_dueDate != null)
@@ -209,17 +210,17 @@ class _AddEditDebtScreenState extends ConsumerState<AddEditDebtScreen> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                Text('Notes (optional)',
+                Text(l10n.notesOptional,
                     style: Theme.of(context).textTheme.titleMedium),
                 const SizedBox(height: 8),
                 TextFormField(
                   controller: _notesController,
                   maxLines: 3,
-                  decoration: const InputDecoration(hintText: 'Add a note...'),
+                  decoration: InputDecoration(hintText: l10n.addNote),
                 ),
                 const SizedBox(height: 24),
                 if (widget.debt != null) ...[
-                  Text('Payments',
+                  Text(l10n.payments,
                       style: Theme.of(context).textTheme.titleMedium),
                   const SizedBox(height: 8),
                   _PaymentsList(debt: widget.debt!),
@@ -229,7 +230,7 @@ class _AddEditDebtScreenState extends ConsumerState<AddEditDebtScreen> {
                     child: OutlinedButton.icon(
                       onPressed: _showAddPayment,
                       icon: const Icon(Icons.add),
-                      label: const Text('Add payment'),
+                      label: Text(l10n.addPayment),
                     ),
                   ),
                 ],
@@ -240,8 +241,9 @@ class _AddEditDebtScreenState extends ConsumerState<AddEditDebtScreen> {
                     onPressed: _save,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 4),
-                      child: Text(
-                          widget.debt == null ? 'Create Debt' : 'Save Changes'),
+                      child: Text(widget.debt == null
+                          ? l10n.createDebt
+                          : l10n.saveChanges),
                     ),
                   ),
                 ),
@@ -254,6 +256,7 @@ class _AddEditDebtScreenState extends ConsumerState<AddEditDebtScreen> {
   }
 
   Future<void> _showAddPayment() async {
+    final l10n = AppLocalizations.of(context)!;
     final amountController = TextEditingController();
     DateTime date = DateTime.now();
     final notesController = TextEditingController();
@@ -272,7 +275,7 @@ class _AddEditDebtScreenState extends ConsumerState<AddEditDebtScreen> {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Add payment',
+                  Text(l10n.addPayment,
                       style: Theme.of(context).textTheme.titleLarge),
                   const SizedBox(height: 12),
                   TextFormField(
@@ -324,8 +327,7 @@ class _AddEditDebtScreenState extends ConsumerState<AddEditDebtScreen> {
                   const SizedBox(height: 12),
                   TextFormField(
                     controller: notesController,
-                    decoration:
-                        const InputDecoration(hintText: 'Notes (optional)'),
+                    decoration: InputDecoration(hintText: l10n.notesOptional),
                   ),
                   const SizedBox(height: 16),
                   SizedBox(
@@ -336,8 +338,7 @@ class _AddEditDebtScreenState extends ConsumerState<AddEditDebtScreen> {
                             double.tryParse(amountController.text.trim());
                         if (amount == null || amount <= 0) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                  content: Text('Enter a valid amount')));
+                              SnackBar(content: Text(l10n.enterValidAmount)));
                           return;
                         }
                         final payment = DebtPayment(
@@ -355,7 +356,7 @@ class _AddEditDebtScreenState extends ConsumerState<AddEditDebtScreen> {
                         ref.invalidate(debtsSummaryProvider);
                         if (mounted) Navigator.pop(context);
                       },
-                      child: const Text('Add payment'),
+                      child: Text(l10n.addPayment),
                     ),
                   ),
                 ],

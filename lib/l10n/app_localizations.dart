@@ -331,6 +331,564 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Version'**
   String get version;
+
+  /// Terms and privacy label
+  ///
+  /// In en, this message translates to:
+  /// **'Terms & Privacy'**
+  String get termsAndPrivacy;
+
+  /// Unknown label for missing items
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown'**
+  String get unknown;
+
+  /// Message when there's no expense data
+  ///
+  /// In en, this message translates to:
+  /// **'No expense data yet'**
+  String get noExpenseDataYet;
+
+  /// Amount owed label
+  ///
+  /// In en, this message translates to:
+  /// **'Owed'**
+  String get owed;
+
+  /// Amount paid label
+  ///
+  /// In en, this message translates to:
+  /// **'Paid'**
+  String get paid;
+
+  /// Remaining amount label
+  ///
+  /// In en, this message translates to:
+  /// **'Remaining'**
+  String get remaining;
+
+  /// Add category button label
+  ///
+  /// In en, this message translates to:
+  /// **'Add Category'**
+  String get addCategory;
+
+  /// Instruction to add first debt
+  ///
+  /// In en, this message translates to:
+  /// **'Tap + to add your first debt'**
+  String get tapToAddFirstDebt;
+
+  /// Success message after saving
+  ///
+  /// In en, this message translates to:
+  /// **'Saved successfully'**
+  String get savedSuccessfully;
+
+  /// Validation message for amount field
+  ///
+  /// In en, this message translates to:
+  /// **'Enter an amount'**
+  String get enterAmount;
+
+  /// Validation message for invalid amount
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid amount'**
+  String get enterValidAmount;
+
+  /// Label for optional due date field
+  ///
+  /// In en, this message translates to:
+  /// **'Due date (optional)'**
+  String get dueDateOptional;
+
+  /// Text when no due date is set
+  ///
+  /// In en, this message translates to:
+  /// **'No due date'**
+  String get noDueDate;
+
+  /// Label for optional notes field
+  ///
+  /// In en, this message translates to:
+  /// **'Notes (optional)'**
+  String get notesOptional;
+
+  /// Hint text for notes field
+  ///
+  /// In en, this message translates to:
+  /// **'Add a note...'**
+  String get addNote;
+
+  /// Payments section label
+  ///
+  /// In en, this message translates to:
+  /// **'Payments'**
+  String get payments;
+
+  /// Add payment button label
+  ///
+  /// In en, this message translates to:
+  /// **'Add payment'**
+  String get addPayment;
+
+  /// Create debt button label
+  ///
+  /// In en, this message translates to:
+  /// **'Create Debt'**
+  String get createDebt;
+
+  /// Save changes button label
+  ///
+  /// In en, this message translates to:
+  /// **'Save Changes'**
+  String get saveChanges;
+
+  /// Error message when category is not found
+  ///
+  /// In en, this message translates to:
+  /// **'Category Not Found'**
+  String get categoryNotFound;
+
+  /// Error text when category is not found
+  ///
+  /// In en, this message translates to:
+  /// **'Category not found'**
+  String get categoryNotFoundText;
+
+  /// Title for delete category dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Delete \"{name}\"'**
+  String deleteCategoryTitle(String name);
+
+  /// Delete category warning message
+  ///
+  /// In en, this message translates to:
+  /// **'This will permanently delete:'**
+  String get deleteCategoryMessage;
+
+  /// Delete category item
+  ///
+  /// In en, this message translates to:
+  /// **'• The category \"{name}\"'**
+  String deleteCategoryItem(String name);
+
+  /// Number of debts to be deleted
+  ///
+  /// In en, this message translates to:
+  /// **'• All {count} debts in this category'**
+  String deleteDebtsCount(int count);
+
+  /// Payment history deletion warning
+  ///
+  /// In en, this message translates to:
+  /// **'• All payment history for these debts'**
+  String get deletePaymentHistory;
+
+  /// Warning that action is permanent
+  ///
+  /// In en, this message translates to:
+  /// **'This action cannot be undone.'**
+  String get actionCannotBeUndone;
+
+  /// Success message after deleting category
+  ///
+  /// In en, this message translates to:
+  /// **'Category \"{name}\" and all debts deleted'**
+  String categoryDeletedSuccess(String name);
+
+  /// Error message when deleting category fails
+  ///
+  /// In en, this message translates to:
+  /// **'Error deleting category: {error}'**
+  String errorDeletingCategory(String error);
+
+  /// Title for delete person dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Delete \"{name}\"'**
+  String deletePersonTitle(String name);
+
+  /// Delete person warning message
+  ///
+  /// In en, this message translates to:
+  /// **'This will permanently delete all debts for this person'**
+  String get deletePersonMessage;
+
+  /// Delete person debts warning
+  ///
+  /// In en, this message translates to:
+  /// **'• All debts for this person will be deleted'**
+  String get deletePersonDebts;
+
+  /// Delete person payments warning
+  ///
+  /// In en, this message translates to:
+  /// **'• All payment history for these debts will be deleted'**
+  String get deletePersonPayments;
+
+  /// Success message after deleting person
+  ///
+  /// In en, this message translates to:
+  /// **'All debts for \"{name}\" deleted'**
+  String personDeletedSuccess(String name);
+
+  /// Error message when deleting person fails
+  ///
+  /// In en, this message translates to:
+  /// **'Error deleting person: {error}'**
+  String errorDeletingPerson(String error);
+
+  /// Total debts count
+  ///
+  /// In en, this message translates to:
+  /// **'{count} Total Debts'**
+  String totalDebts(int count);
+
+  /// Total amount label
+  ///
+  /// In en, this message translates to:
+  /// **'total amount'**
+  String get totalAmountLabel;
+
+  /// Settled status label
+  ///
+  /// In en, this message translates to:
+  /// **'Settled'**
+  String get settled;
+
+  /// Delete category menu item
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Category'**
+  String get deleteCategory;
+
+  /// Empty state message for category
+  ///
+  /// In en, this message translates to:
+  /// **'No people in this category yet'**
+  String get noPeopleInCategory;
+
+  /// Instruction to add first debt
+  ///
+  /// In en, this message translates to:
+  /// **'Add your first debt to get started'**
+  String get addFirstDebtToStart;
+
+  /// Add first debt button
+  ///
+  /// In en, this message translates to:
+  /// **'Add First Debt'**
+  String get addFirstDebtButton;
+
+  /// Single debt count
+  ///
+  /// In en, this message translates to:
+  /// **'{count} debt'**
+  String debtCount(int count);
+
+  /// Multiple debts count
+  ///
+  /// In en, this message translates to:
+  /// **'{count} debts'**
+  String debtsCount(int count);
+
+  /// Total label
+  ///
+  /// In en, this message translates to:
+  /// **'total'**
+  String get total;
+
+  /// Debt timeline screen title
+  ///
+  /// In en, this message translates to:
+  /// **'Debt Timeline'**
+  String get debtTimeline;
+
+  /// Error message when debt is not found
+  ///
+  /// In en, this message translates to:
+  /// **'Debt not found'**
+  String get debtNotFound;
+
+  /// Total amount label in summary
+  ///
+  /// In en, this message translates to:
+  /// **'Total Amount'**
+  String get totalAmountValue;
+
+  /// Due date prefix
+  ///
+  /// In en, this message translates to:
+  /// **'Due:'**
+  String get due;
+
+  /// History section label
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get history;
+
+  /// Empty history message
+  ///
+  /// In en, this message translates to:
+  /// **'No history yet'**
+  String get noHistoryYet;
+
+  /// Empty history instruction
+  ///
+  /// In en, this message translates to:
+  /// **'Payment history will appear here'**
+  String get paymentHistoryWillAppear;
+
+  /// Amount field label
+  ///
+  /// In en, this message translates to:
+  /// **'Amount'**
+  String get amount;
+
+  /// Total owed label
+  ///
+  /// In en, this message translates to:
+  /// **'Total Owed'**
+  String get totalOwed;
+
+  /// Category context label
+  ///
+  /// In en, this message translates to:
+  /// **'In {category}'**
+  String inCategory(String category);
+
+  /// Add debt button label
+  ///
+  /// In en, this message translates to:
+  /// **'Add Debt'**
+  String get addDebtButton;
+
+  /// Add payment button label
+  ///
+  /// In en, this message translates to:
+  /// **'Add Payment'**
+  String get addPaymentButton;
+
+  /// Empty state instruction for timeline
+  ///
+  /// In en, this message translates to:
+  /// **'Add your first debt or payment to get started'**
+  String get addFirstDebtOrPayment;
+
+  /// Person label with name
+  ///
+  /// In en, this message translates to:
+  /// **'Person: {name}'**
+  String personLabel(String name);
+
+  /// Optional due date label
+  ///
+  /// In en, this message translates to:
+  /// **'Due Date (Optional)'**
+  String get dueDateOptionalLabel;
+
+  /// For person label
+  ///
+  /// In en, this message translates to:
+  /// **'For: {name}'**
+  String forPerson(String name);
+
+  /// Message when there's no remaining debt
+  ///
+  /// In en, this message translates to:
+  /// **'No remaining debt to pay'**
+  String get noRemainingDebt;
+
+  /// Error message when deleting debt fails
+  ///
+  /// In en, this message translates to:
+  /// **'Error deleting debt: {error}'**
+  String errorDeletingDebt(String error);
+
+  /// Error message when deleting payment fails
+  ///
+  /// In en, this message translates to:
+  /// **'Error deleting payment: {error}'**
+  String errorDeletingPayment(String error);
+
+  /// Total balance label
+  ///
+  /// In en, this message translates to:
+  /// **'Total Balance'**
+  String get totalBalance;
+
+  /// Income label
+  ///
+  /// In en, this message translates to:
+  /// **'Income'**
+  String get income;
+
+  /// Expense label
+  ///
+  /// In en, this message translates to:
+  /// **'Expense'**
+  String get expense;
+
+  /// Add button label
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get add;
+
+  /// Today label
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get today;
+
+  /// Yesterday label
+  ///
+  /// In en, this message translates to:
+  /// **'Yesterday'**
+  String get yesterday;
+
+  /// Add transaction screen title
+  ///
+  /// In en, this message translates to:
+  /// **'Add Transaction'**
+  String get addTransaction;
+
+  /// Validation message for missing fields
+  ///
+  /// In en, this message translates to:
+  /// **'Please fill all required fields'**
+  String get fillAllRequiredFields;
+
+  /// Success message after adding transaction
+  ///
+  /// In en, this message translates to:
+  /// **'Transaction added successfully'**
+  String get transactionAddedSuccess;
+
+  /// Error message when adding transaction fails
+  ///
+  /// In en, this message translates to:
+  /// **'Error adding transaction: {error}'**
+  String errorAddingTransaction(String error);
+
+  /// Validation message for empty amount
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter an amount'**
+  String get pleaseEnterAmount;
+
+  /// Validation message for invalid amount
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid amount'**
+  String get pleaseEnterValidAmount;
+
+  /// Category label
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get category;
+
+  /// Date and time label
+  ///
+  /// In en, this message translates to:
+  /// **'Date & Time'**
+  String get dateAndTime;
+
+  /// Save transaction button label
+  ///
+  /// In en, this message translates to:
+  /// **'Save Transaction'**
+  String get saveTransaction;
+
+  /// Color label
+  ///
+  /// In en, this message translates to:
+  /// **'Color'**
+  String get color;
+
+  /// Icon label
+  ///
+  /// In en, this message translates to:
+  /// **'Icon'**
+  String get icon;
+
+  /// Folder icon name
+  ///
+  /// In en, this message translates to:
+  /// **'Folder'**
+  String get iconFolder;
+
+  /// Business icon name
+  ///
+  /// In en, this message translates to:
+  /// **'Business'**
+  String get iconBusiness;
+
+  /// Home icon name
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get iconHome;
+
+  /// Work icon name
+  ///
+  /// In en, this message translates to:
+  /// **'Work'**
+  String get iconWork;
+
+  /// School icon name
+  ///
+  /// In en, this message translates to:
+  /// **'School'**
+  String get iconSchool;
+
+  /// Restaurant icon name
+  ///
+  /// In en, this message translates to:
+  /// **'Restaurant'**
+  String get iconRestaurant;
+
+  /// Health icon name
+  ///
+  /// In en, this message translates to:
+  /// **'Health'**
+  String get iconHealth;
+
+  /// Car icon name
+  ///
+  /// In en, this message translates to:
+  /// **'Car'**
+  String get iconCar;
+
+  /// Shopping icon name
+  ///
+  /// In en, this message translates to:
+  /// **'Shopping'**
+  String get iconShopping;
+
+  /// Games icon name
+  ///
+  /// In en, this message translates to:
+  /// **'Games'**
+  String get iconGames;
+
+  /// Success message after creating category
+  ///
+  /// In en, this message translates to:
+  /// **'Category \"{name}\" created successfully!'**
+  String categoryCreatedSuccess(String name);
+
+  /// Error message when creating category fails
+  ///
+  /// In en, this message translates to:
+  /// **'Error creating category: {error}'**
+  String errorCreatingCategory(String error);
 }
 
 class _AppLocalizationsDelegate

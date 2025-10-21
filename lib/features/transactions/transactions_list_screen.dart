@@ -55,7 +55,7 @@ class TransactionsListScreen extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Total Balance',
+                  l10n.totalBalance,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: isDark
                             ? AppColors.darkText
@@ -75,7 +75,7 @@ class TransactionsListScreen extends ConsumerWidget {
                   children: [
                     Expanded(
                       child: _BalanceCard(
-                        label: 'Income',
+                        label: l10n.income,
                         amount: balance['income'] ?? 0.0,
                         icon: Icons.arrow_downward,
                         color: AppColors.successGreen,
@@ -85,7 +85,7 @@ class TransactionsListScreen extends ConsumerWidget {
                     const SizedBox(width: 12),
                     Expanded(
                       child: _BalanceCard(
-                        label: 'Expense',
+                        label: l10n.expense,
                         amount: balance['expense'] ?? 0.0,
                         icon: Icons.arrow_upward,
                         color: AppColors.errorRose,
@@ -159,7 +159,7 @@ class TransactionsListScreen extends ConsumerWidget {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => context.push('/add-transaction'),
         icon: const Icon(Icons.add),
-        label: const Text('Add'),
+        label: Text(l10n.add),
         backgroundColor:
             isDark ? AppColors.primaryLight : AppColors.primaryIndigo,
         foregroundColor: isDark ? AppColors.darkBackground : Colors.white,
@@ -260,11 +260,13 @@ class _TransactionGroup extends ConsumerWidget {
             .format(DateTime.now().subtract(const Duration(days: 1))) ==
         date;
 
+    final l10n = AppLocalizations.of(context)!;
+
     String dateLabel;
     if (isToday) {
-      dateLabel = 'Today';
+      dateLabel = l10n.today;
     } else if (isYesterday) {
-      dateLabel = 'Yesterday';
+      dateLabel = l10n.yesterday;
     } else {
       dateLabel = DateFormat('EEEE, MMM d').format(parsedDate);
     }
@@ -297,6 +299,7 @@ class _TransactionCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final categories = ref.watch(categoriesProvider);
     final categoryRepo = ref.watch(categoryRepositoryProvider);
     final category = categories.firstWhere(
@@ -304,7 +307,7 @@ class _TransactionCard extends ConsumerWidget {
       orElse: () => Category(
         id: '',
         userId: '',
-        name: 'Unknown',
+        name: l10n.unknown,
         icon: 'category',
         color: 0xFF666666,
         type: CategoryType.expense,

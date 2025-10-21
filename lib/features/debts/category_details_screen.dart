@@ -5,6 +5,7 @@ import 'package:pocketsage/providers/providers.dart';
 import 'package:pocketsage/data/models/debt.dart';
 import 'package:pocketsage/data/models/debt_category.dart';
 import 'package:pocketsage/core/theme/theme.dart';
+import 'package:pocketsage/l10n/app_localizations.dart';
 
 class CategoryDetailsScreen extends ConsumerWidget {
   final String categoryId;
@@ -13,39 +14,42 @@ class CategoryDetailsScreen extends ConsumerWidget {
 
   Future<void> _showDeleteCategoryDialog(
       BuildContext context, WidgetRef ref, DebtCategory category) async {
+    final l10n = AppLocalizations.of(context)!;
     final debtsRepo = ref.read(debtsRepositoryProvider);
     final categoryRepo = ref.read(debtCategoryRepositoryProvider);
+    final debtsCount = debtsRepo.getByCategory(categoryId).length;
 
     final confirm = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Delete "${category.name}"'),
+        title: Text(l10n.deleteCategoryTitle(category.name)),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('This will permanently delete:'),
+            Text(l10n.deleteCategoryMessage),
             const SizedBox(height: 8),
-            Text('• The category "${category.name}"'),
-            Text(
-                '• All ${debtsRepo.getByCategory(categoryId).length} debts in this category'),
-            Text('• All payment history for these debts'),
+            Text(l10n.deleteCategoryItem(category.name)),
+            Text(l10n.deleteDebtsCount(debtsCount)),
+            Text(l10n.deletePaymentHistory),
             const SizedBox(height: 12),
-            const Text(
-              'This action cannot be undone.',
-              style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
+            Text(
+              l10n.actionCannotBeUndone,
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold, color: Colors.red),
             ),
           ],
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
-            child: const Text('Cancel'),
+            child: Text(l10n.cancel),
           ),
           ElevatedButton(
             onPressed: () => Navigator.of(context).pop(true),
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-            child: const Text('Delete', style: TextStyle(color: Colors.white)),
+            child:
+                Text(l10n.delete, style: const TextStyle(color: Colors.white)),
           ),
         ],
       ),
@@ -60,17 +64,17 @@ class CategoryDetailsScreen extends ConsumerWidget {
         ref.invalidate(debtCategoriesProvider);
 
         if (context.mounted) {
+          final l10n = AppLocalizations.of(context)!;
           context.pop(); // Go back to debts list
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-                content:
-                    Text('Category "${category.name}" and all debts deleted')),
+            SnackBar(content: Text(l10n.categoryDeletedSuccess(category.name))),
           );
         }
       } catch (e) {
         if (context.mounted) {
+          final l10n = AppLocalizations.of(context)!;
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Error deleting category: ${e.toString()}')),
+            SnackBar(content: Text(l10n.errorDeletingCategory(e.toString()))),
           );
         }
       }
@@ -79,36 +83,37 @@ class CategoryDetailsScreen extends ConsumerWidget {
 
   Future<bool> _showDeletePersonConfirmation(
       BuildContext context, String personName) async {
+    final l10n = AppLocalizations.of(context)!;
     return await showDialog<bool>(
           context: context,
           builder: (context) => AlertDialog(
-            title: Text('Delete "$personName"'),
-            content: const Column(
+            title: Text(l10n.deletePersonTitle(personName)),
+            content: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('This will permanently delete all debts for this person'),
-                SizedBox(height: 8),
-                Text('• All debts for this person will be deleted'),
-                Text('• All payment history for these debts will be deleted'),
-                SizedBox(height: 12),
+                Text(l10n.deletePersonMessage),
+                const SizedBox(height: 8),
+                Text(l10n.deletePersonDebts),
+                Text(l10n.deletePersonPayments),
+                const SizedBox(height: 12),
                 Text(
-                  'This action cannot be undone.',
-                  style:
-                      TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
+                  l10n.actionCannotBeUndone,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.red),
                 ),
               ],
             ),
             actions: [
               TextButton(
                 onPressed: () => Navigator.of(context).pop(false),
-                child: const Text('Cancel'),
+                child: Text(l10n.cancel),
               ),
               ElevatedButton(
                 onPressed: () => Navigator.of(context).pop(true),
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                child:
-                    const Text('Delete', style: TextStyle(color: Colors.white)),
+                child: Text(l10n.delete,
+                    style: const TextStyle(color: Colors.white)),
               ),
             ],
           ),
@@ -119,14 +124,15 @@ class CategoryDetailsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final l10n = AppLocalizations.of(context)!;
     final categoryRepo = ref.watch(debtCategoryRepositoryProvider);
     final debtsRepo = ref.watch(debtsRepositoryProvider);
 
     final category = categoryRepo.getById(categoryId);
     if (category == null) {
       return Scaffold(
-        appBar: AppBar(title: const Text('Category Not Found')),
-        body: const Center(child: Text('Category not found')),
+        appBar: AppBar(title: Text(l10n.categoryNotFound)),
+        body: Center(child: Text(l10n.categoryNotFoundText)),
       );
     }
 
@@ -153,14 +159,14 @@ class CategoryDetailsScreen extends ConsumerWidget {
                 }
               },
               itemBuilder: (context) => [
-                const PopupMenuItem(
+                PopupMenuItem(
                   value: 'delete',
                   child: Row(
                     children: [
-                      Icon(Icons.delete, color: Colors.red),
-                      SizedBox(width: 8),
-                      Text('Delete Category',
-                          style: TextStyle(color: Colors.red)),
+                      const Icon(Icons.delete, color: Colors.red),
+                      const SizedBox(width: 8),
+                      Text(l10n.deleteCategory,
+                          style: const TextStyle(color: Colors.red)),
                     ],
                   ),
                 ),
@@ -208,7 +214,7 @@ class CategoryDetailsScreen extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '${stats['totalDebts']} Total Debts',
+                        l10n.totalDebts(stats['totalDebts'] as int),
                         style:
                             Theme.of(context).textTheme.titleMedium?.copyWith(
                                   fontWeight: FontWeight.w600,
@@ -216,7 +222,7 @@ class CategoryDetailsScreen extends ConsumerWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        '€${stats['totalOwed']?.toStringAsFixed(2) ?? '0.00'} total amount',
+                        '€${stats['totalOwed']?.toStringAsFixed(2) ?? '0.00'} ${l10n.totalAmountLabel}',
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                               color: Color(category.color),
                               fontWeight: FontWeight.w600,
@@ -236,7 +242,7 @@ class CategoryDetailsScreen extends ConsumerWidget {
                           ),
                     ),
                     Text(
-                      'Remaining',
+                      l10n.remaining,
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                             color: isDark
                                 ? AppColors.darkTextSecondary
@@ -305,18 +311,20 @@ class CategoryDetailsScreen extends ConsumerWidget {
                               ref.invalidate(debtsGroupedByCategoryProvider);
 
                               if (context.mounted) {
+                                final l10n = AppLocalizations.of(context)!;
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
-                                      content: Text(
-                                          'All debts for "$personName" deleted')),
+                                      content: Text(l10n
+                                          .personDeletedSuccess(personName))),
                                 );
                               }
                             } catch (e) {
                               if (context.mounted) {
+                                final l10n = AppLocalizations.of(context)!;
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
-                                      content: Text(
-                                          'Error deleting person: ${e.toString()}')),
+                                      content: Text(l10n
+                                          .errorDeletingPerson(e.toString()))),
                                 );
                               }
                             }
@@ -359,7 +367,7 @@ class CategoryDetailsScreen extends ConsumerWidget {
                                           ),
                                           const SizedBox(height: 4),
                                           Text(
-                                            '${personDebts.length} debt${personDebts.length == 1 ? '' : 's'} • €${totalAmount.toStringAsFixed(0)} total',
+                                            '${personDebts.length == 1 ? l10n.debtCount(personDebts.length) : l10n.debtsCount(personDebts.length)} • €${totalAmount.toStringAsFixed(0)} ${l10n.total}',
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .bodyMedium
@@ -392,8 +400,8 @@ class CategoryDetailsScreen extends ConsumerWidget {
                                         ),
                                         Text(
                                           totalRemaining > 0
-                                              ? 'Remaining'
-                                              : 'Settled',
+                                              ? l10n.remaining
+                                              : l10n.settled,
                                           style: Theme.of(context)
                                               .textTheme
                                               .bodySmall
@@ -431,7 +439,7 @@ class CategoryDetailsScreen extends ConsumerWidget {
         onPressed: () =>
             context.push('/add-debt', extra: {'categoryId': categoryId}),
         icon: const Icon(Icons.add),
-        label: const Text('Add Debt'),
+        label: Text(l10n.addDebtButton),
         backgroundColor: Color(category.color),
         foregroundColor: Colors.white,
       ),
@@ -439,14 +447,15 @@ class CategoryDetailsScreen extends ConsumerWidget {
   }
 }
 
-class _EmptyPeopleState extends StatelessWidget {
+class _EmptyPeopleState extends ConsumerWidget {
   final bool isDark;
   final DebtCategory category;
 
   const _EmptyPeopleState({required this.isDark, required this.category});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -458,7 +467,7 @@ class _EmptyPeopleState extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            'No people in this category yet',
+            l10n.noPeopleInCategory,
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   color: isDark
                       ? AppColors.darkTextSecondary
@@ -467,7 +476,7 @@ class _EmptyPeopleState extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            'Add your first debt to get started',
+            l10n.addFirstDebtToStart,
             style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizedBox(height: 24),
@@ -475,7 +484,7 @@ class _EmptyPeopleState extends StatelessWidget {
             onPressed: () =>
                 context.push('/add-debt', extra: {'categoryId': category.id}),
             icon: const Icon(Icons.add),
-            label: const Text('Add First Debt'),
+            label: Text(l10n.addFirstDebtButton),
             style: ElevatedButton.styleFrom(
               backgroundColor: Color(category.color),
               foregroundColor: Colors.white,

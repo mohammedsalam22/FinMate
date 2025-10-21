@@ -6,6 +6,7 @@ import 'package:pocketsage/data/models/debt.dart';
 import 'package:pocketsage/data/models/debt_category.dart';
 import 'package:pocketsage/core/theme/theme.dart';
 import 'package:pocketsage/features/debts/widgets/timeline_item.dart';
+import 'package:pocketsage/l10n/app_localizations.dart';
 import 'package:uuid/uuid.dart';
 
 class PersonTimelineScreen extends ConsumerStatefulWidget {
@@ -36,8 +37,9 @@ class _PersonTimelineScreenState extends ConsumerState<PersonTimelineScreen> {
       }
     } catch (e) {
       if (mounted) {
+        final l10n = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error deleting debt: ${e.toString()}')),
+          SnackBar(content: Text(l10n.errorDeletingDebt(e.toString()))),
         );
       }
     }
@@ -55,8 +57,9 @@ class _PersonTimelineScreenState extends ConsumerState<PersonTimelineScreen> {
       }
     } catch (e) {
       if (mounted) {
+        final l10n = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error deleting payment: ${e.toString()}')),
+          SnackBar(content: Text(l10n.errorDeletingPayment(e.toString()))),
         );
       }
     }
@@ -65,14 +68,15 @@ class _PersonTimelineScreenState extends ConsumerState<PersonTimelineScreen> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final l10n = AppLocalizations.of(context)!;
     final categoryRepo = ref.watch(debtCategoryRepositoryProvider);
     final debtsRepo = ref.watch(debtsRepositoryProvider);
 
     final category = categoryRepo.getById(widget.categoryId);
     if (category == null) {
       return Scaffold(
-        appBar: AppBar(title: const Text('Category Not Found')),
-        body: const Center(child: Text('Category not found')),
+        appBar: AppBar(title: Text(l10n.categoryNotFound)),
+        body: Center(child: Text(l10n.categoryNotFoundText)),
       );
     }
 
@@ -155,7 +159,7 @@ class _PersonTimelineScreenState extends ConsumerState<PersonTimelineScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     _SummaryMetric(
-                      label: 'Total Owed',
+                      label: l10n.totalOwed,
                       value: totalOwed,
                       isDark: isDark,
                       color: Color(category.color),
@@ -166,7 +170,7 @@ class _PersonTimelineScreenState extends ConsumerState<PersonTimelineScreen> {
                       color: Color(category.color).withValues(alpha: 0.3),
                     ),
                     _SummaryMetric(
-                      label: 'Paid',
+                      label: l10n.paid,
                       value: totalPaid,
                       isDark: isDark,
                       color: AppColors.successGreen,
@@ -177,7 +181,7 @@ class _PersonTimelineScreenState extends ConsumerState<PersonTimelineScreen> {
                       color: Color(category.color).withValues(alpha: 0.3),
                     ),
                     _SummaryMetric(
-                      label: 'Remaining',
+                      label: l10n.remaining,
                       value: totalRemaining,
                       isDark: isDark,
                       color: totalRemaining > 0
@@ -188,7 +192,7 @@ class _PersonTimelineScreenState extends ConsumerState<PersonTimelineScreen> {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'In ${category.name}',
+                  l10n.inCategory(category.name),
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: Color(category.color),
                         fontWeight: FontWeight.w500,
@@ -204,7 +208,7 @@ class _PersonTimelineScreenState extends ConsumerState<PersonTimelineScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'History',
+                  l10n.history,
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 Row(
@@ -212,13 +216,13 @@ class _PersonTimelineScreenState extends ConsumerState<PersonTimelineScreen> {
                     TextButton.icon(
                       onPressed: () => _showAddDebtDialog(),
                       icon: const Icon(Icons.receipt_long),
-                      label: const Text('Add Debt'),
+                      label: Text(l10n.addDebtButton),
                     ),
                     if (totalRemaining > 0.01)
                       TextButton.icon(
                         onPressed: () => _showAddPaymentDialog(),
                         icon: const Icon(Icons.payment),
-                        label: const Text('Add Payment'),
+                        label: Text(l10n.addPaymentButton),
                       ),
                   ],
                 ),
@@ -239,7 +243,7 @@ class _PersonTimelineScreenState extends ConsumerState<PersonTimelineScreen> {
                         ),
                         const SizedBox(height: 16),
                         Text(
-                          'No history yet',
+                          l10n.noHistoryYet,
                           style:
                               Theme.of(context).textTheme.titleMedium?.copyWith(
                                     color: isDark
@@ -249,7 +253,7 @@ class _PersonTimelineScreenState extends ConsumerState<PersonTimelineScreen> {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          'Add your first debt or payment to get started',
+                          l10n.addFirstDebtOrPayment,
                           style: Theme.of(context).textTheme.bodyMedium,
                         ),
                         const SizedBox(height: 24),
@@ -259,7 +263,7 @@ class _PersonTimelineScreenState extends ConsumerState<PersonTimelineScreen> {
                             ElevatedButton.icon(
                               onPressed: _showAddDebtDialog,
                               icon: const Icon(Icons.receipt_long),
-                              label: const Text('Add Debt'),
+                              label: Text(l10n.addDebtButton),
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Color(category.color),
                                 foregroundColor: Colors.white,
@@ -270,7 +274,7 @@ class _PersonTimelineScreenState extends ConsumerState<PersonTimelineScreen> {
                               ElevatedButton.icon(
                                 onPressed: _showAddPaymentDialog,
                                 icon: const Icon(Icons.payment),
-                                label: const Text('Add Payment'),
+                                label: Text(l10n.addPaymentButton),
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: AppColors.successGreen,
                                   foregroundColor: Colors.white,
@@ -330,6 +334,7 @@ class _PersonTimelineScreenState extends ConsumerState<PersonTimelineScreen> {
   }
 
   Future<void> _showAddDebtDialog() async {
+    final l10n = AppLocalizations.of(context)!;
     final amountController = TextEditingController();
     final notesController = TextEditingController();
     DateTime dueDate = DateTime.now();
@@ -351,20 +356,21 @@ class _PersonTimelineScreenState extends ConsumerState<PersonTimelineScreen> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Add Debt', style: Theme.of(context).textTheme.titleLarge),
+                Text(l10n.addDebtButton,
+                    style: Theme.of(context).textTheme.titleLarge),
                 const SizedBox(height: 16),
                 TextField(
                   controller: amountController,
                   keyboardType:
                       const TextInputType.numberWithOptions(decimal: true),
-                  decoration: const InputDecoration(
-                    labelText: 'Amount',
+                  decoration: InputDecoration(
+                    labelText: l10n.amount,
                     prefixText: '€ ',
                   ),
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'Person: ${widget.personName}',
+                  l10n.personLabel(widget.personName),
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         fontWeight: FontWeight.w600,
                       ),
@@ -393,7 +399,7 @@ class _PersonTimelineScreenState extends ConsumerState<PersonTimelineScreen> {
                         const Icon(Icons.calendar_today),
                         const SizedBox(width: 12),
                         Text(selectedDueDate == null
-                            ? 'Due Date (Optional)'
+                            ? l10n.dueDateOptionalLabel
                             : DateFormat('MMM d, yyyy')
                                 .format(selectedDueDate!)),
                       ],
@@ -403,8 +409,7 @@ class _PersonTimelineScreenState extends ConsumerState<PersonTimelineScreen> {
                 const SizedBox(height: 16),
                 TextField(
                   controller: notesController,
-                  decoration:
-                      const InputDecoration(labelText: 'Notes (Optional)'),
+                  decoration: InputDecoration(labelText: l10n.notesOptional),
                   maxLines: 2,
                 ),
                 const SizedBox(height: 24),
@@ -416,7 +421,7 @@ class _PersonTimelineScreenState extends ConsumerState<PersonTimelineScreen> {
                           double.tryParse(amountController.text.trim());
                       if (amount == null || amount <= 0) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Enter a valid amount')),
+                          SnackBar(content: Text(l10n.enterValidAmount)),
                         );
                         return;
                       }
@@ -447,7 +452,7 @@ class _PersonTimelineScreenState extends ConsumerState<PersonTimelineScreen> {
                         setState(() {}); // Refresh timeline
                       }
                     },
-                    child: const Text('Add Debt'),
+                    child: Text(l10n.addDebtButton),
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -460,6 +465,7 @@ class _PersonTimelineScreenState extends ConsumerState<PersonTimelineScreen> {
   }
 
   Future<void> _showAddPaymentDialog() async {
+    final l10n = AppLocalizations.of(context)!;
     // Get the first debt with remaining amount to make a payment
     final personDebts = ref
         .read(debtsRepositoryProvider)
@@ -469,7 +475,7 @@ class _PersonTimelineScreenState extends ConsumerState<PersonTimelineScreen> {
 
     if (debtWithRemaining == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('No remaining debt to pay')),
+        SnackBar(content: Text(l10n.noRemainingDebt)),
       );
       return;
     }
@@ -495,21 +501,21 @@ class _PersonTimelineScreenState extends ConsumerState<PersonTimelineScreen> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Add Payment',
+                Text(l10n.addPaymentButton,
                     style: Theme.of(context).textTheme.titleLarge),
                 const SizedBox(height: 16),
                 TextField(
                   controller: amountController,
                   keyboardType:
                       const TextInputType.numberWithOptions(decimal: true),
-                  decoration: const InputDecoration(
-                    labelText: 'Amount',
+                  decoration: InputDecoration(
+                    labelText: l10n.amount,
                     prefixText: '€ ',
                   ),
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'For: ${widget.personName}',
+                  l10n.forPerson(widget.personName),
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         fontWeight: FontWeight.w600,
                       ),
@@ -543,8 +549,7 @@ class _PersonTimelineScreenState extends ConsumerState<PersonTimelineScreen> {
                 const SizedBox(height: 16),
                 TextField(
                   controller: notesController,
-                  decoration:
-                      const InputDecoration(labelText: 'Notes (Optional)'),
+                  decoration: InputDecoration(labelText: l10n.notesOptional),
                   maxLines: 2,
                 ),
                 const SizedBox(height: 24),
@@ -556,7 +561,7 @@ class _PersonTimelineScreenState extends ConsumerState<PersonTimelineScreen> {
                           double.tryParse(amountController.text.trim());
                       if (amount == null || amount <= 0) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Enter a valid amount')),
+                          SnackBar(content: Text(l10n.enterValidAmount)),
                         );
                         return;
                       }
@@ -582,7 +587,7 @@ class _PersonTimelineScreenState extends ConsumerState<PersonTimelineScreen> {
                         setState(() {}); // Refresh timeline
                       }
                     },
-                    child: const Text('Add Payment'),
+                    child: Text(l10n.addPaymentButton),
                   ),
                 ),
                 const SizedBox(height: 16),

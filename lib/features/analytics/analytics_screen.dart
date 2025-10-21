@@ -5,6 +5,7 @@ import 'package:pocketsage/providers/providers.dart';
 import 'package:pocketsage/data/models/transaction.dart';
 import 'package:pocketsage/data/models/category.dart';
 import 'package:pocketsage/core/theme/theme.dart';
+import 'package:pocketsage/l10n/app_localizations.dart';
 
 class AnalyticsScreen extends ConsumerWidget {
   const AnalyticsScreen({super.key});
@@ -16,6 +17,7 @@ class AnalyticsScreen extends ConsumerWidget {
     final categoryRepo = ref.watch(categoryRepositoryProvider);
     final categories = ref.watch(categoriesProvider);
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final l10n = AppLocalizations.of(context)!;
 
     final expensesByCategory = <String, double>{};
     for (var transaction in transactions) {
@@ -31,7 +33,7 @@ class AnalyticsScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Analytics'),
+        title: Text(l10n.analytics),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
@@ -42,7 +44,7 @@ class AnalyticsScreen extends ConsumerWidget {
               children: [
                 Expanded(
                   child: _SummaryCard(
-                    label: 'Total Income',
+                    label: l10n.totalIncome,
                     amount: balance['income'] ?? 0.0,
                     color: AppColors.successGreen,
                     icon: Icons.trending_up,
@@ -52,7 +54,7 @@ class AnalyticsScreen extends ConsumerWidget {
                 const SizedBox(width: 12),
                 Expanded(
                   child: _SummaryCard(
-                    label: 'Total Expense',
+                    label: l10n.totalExpense,
                     amount: balance['expense'] ?? 0.0,
                     color: AppColors.errorRose,
                     icon: Icons.trending_down,
@@ -63,7 +65,7 @@ class AnalyticsScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 24),
             Text(
-              'Expense Breakdown',
+              l10n.expenseBreakdown,
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 16),
@@ -83,7 +85,7 @@ class AnalyticsScreen extends ConsumerWidget {
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        'No expense data yet',
+                        l10n.noExpenseDataYet,
                         style:
                             Theme.of(context).textTheme.titleMedium?.copyWith(
                                   color: isDark
@@ -110,7 +112,7 @@ class AnalyticsScreen extends ConsumerWidget {
                             orElse: () => Category(
                               id: '',
                               userId: '',
-                              name: 'Unknown',
+                              name: l10n.unknown,
                               icon: 'category',
                               color: 0xFF666666,
                               type: CategoryType.expense,
@@ -142,7 +144,7 @@ class AnalyticsScreen extends ConsumerWidget {
                       orElse: () => Category(
                         id: '',
                         userId: '',
-                        name: 'Unknown',
+                        name: l10n.unknown,
                         icon: 'category',
                         color: 0xFF666666,
                         type: CategoryType.expense,
