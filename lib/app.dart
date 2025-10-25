@@ -13,6 +13,8 @@ import 'package:pocketsage/features/debts/add_edit_debt/add_edit_debt_screen.dar
 import 'package:pocketsage/features/debts/debt_timeline/debt_timeline_screen.dart';
 import 'package:pocketsage/features/debts/category_details/category_details_screen.dart';
 import 'package:pocketsage/features/debts/person_timeline/person_timeline_screen.dart';
+import 'package:pocketsage/features/ai_assistant/ai_chat_screen.dart';
+import 'package:pocketsage/widgets/neumorphic_bottom_navigation_bar.dart';
 import 'package:pocketsage/core/theme/theme.dart';
 
 class FinMateApp extends ConsumerWidget {
@@ -45,26 +47,9 @@ class FinMateApp extends ConsumerWidget {
 final _router = GoRouter(
   initialLocation: '/',
   routes: [
-    ShellRoute(
-      builder: (context, state, child) => MainShell(child: child),
-      routes: [
-        GoRoute(
-          path: '/',
-          builder: (context, state) => const TransactionsListScreen(),
-        ),
-        GoRoute(
-          path: '/debts',
-          builder: (context, state) => const DebtsListScreen(),
-        ),
-        GoRoute(
-          path: '/analytics',
-          builder: (context, state) => const AnalyticsScreen(),
-        ),
-        GoRoute(
-          path: '/settings',
-          builder: (context, state) => const SettingsScreen(),
-        ),
-      ],
+    GoRoute(
+      path: '/',
+      builder: (context, state) => const MainShell(),
     ),
     GoRoute(
       path: '/add-transaction',
@@ -120,9 +105,7 @@ final _router = GoRouter(
 );
 
 class MainShell extends StatefulWidget {
-  final Widget child;
-
-  const MainShell({super.key, required this.child});
+  const MainShell({super.key});
 
   @override
   State<MainShell> createState() => _MainShellState();
@@ -133,72 +116,53 @@ class _MainShellState extends State<MainShell> {
 
   void _onItemTapped(int index) {
     setState(() => _currentIndex = index);
-    switch (index) {
-      case 0:
-        context.go('/');
-        break;
-      case 1:
-        context.go('/debts');
-        break;
-      case 2:
-        context.go('/analytics');
-        break;
-      case 3:
-        context.go('/settings');
-        break;
-    }
   }
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
-      body: widget.child,
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          border: Border(
-            top: BorderSide(
-              color: (isDark
-                      ? AppColors.darkTextSecondary
-                      : AppColors.lightTextSecondary)
-                  .withValues(alpha: 0.2),
-              width: 1,
-            ),
+      body: IndexedStack(
+        index: _currentIndex,
+        children: const [
+          TransactionsListScreen(),
+          DebtsListScreen(),
+          AnalyticsScreen(),
+          SettingsScreen(),
+          AiChatScreen(),
+        ],
+      ),
+      bottomNavigationBar: NeumorphicBottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: _onItemTapped,
+        items: [
+          NeumorphicNavItem(
+            icon: Icons.receipt_long_outlined,
+            selectedIcon: Icons.receipt_long,
+            label: l10n.transactions,
           ),
-        ),
-        child: NavigationBar(
-          selectedIndex: _currentIndex,
-          onDestinationSelected: _onItemTapped,
-          backgroundColor:
-              isDark ? AppColors.darkBackground : AppColors.lightBackground,
-          indicatorColor: isDark
-              ? AppColors.primaryLight.withValues(alpha: 0.2)
-              : AppColors.primaryIndigo.withValues(alpha: 0.1),
-          destinations: [
-            NavigationDestination(
-              icon: const Icon(Icons.receipt_long_outlined),
-              selectedIcon: const Icon(Icons.receipt_long),
-              label: l10n.transactions,
-            ),
-            NavigationDestination(
-              icon: const Icon(Icons.account_balance_wallet_outlined),
-              selectedIcon: const Icon(Icons.account_balance_wallet),
-              label: l10n.debts,
-            ),
-            NavigationDestination(
-              icon: const Icon(Icons.bar_chart_outlined),
-              selectedIcon: const Icon(Icons.bar_chart),
-              label: l10n.analytics,
-            ),
-            NavigationDestination(
-              icon: const Icon(Icons.settings_outlined),
-              selectedIcon: const Icon(Icons.settings),
-              label: l10n.settings,
-            ),
-          ],
-        ),
+          NeumorphicNavItem(
+            icon: Icons.account_balance_wallet_outlined,
+            selectedIcon: Icons.account_balance_wallet,
+            label: l10n.debts,
+          ),
+          NeumorphicNavItem(
+            icon: Icons.bar_chart_outlined,
+            selectedIcon: Icons.bar_chart,
+            label: l10n.analytics,
+          ),
+          NeumorphicNavItem(
+            icon: Icons.settings_outlined,
+            selectedIcon: Icons.settings,
+            label: l10n.settings,
+          ),
+          NeumorphicNavItem(
+            icon: Icons.smart_toy_outlined,
+            selectedIcon: Icons.smart_toy,
+            label: 'AI',
+          ),
+        ],
       ),
     );
   }

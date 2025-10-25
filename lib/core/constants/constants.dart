@@ -5,6 +5,7 @@ class HiveBoxes {
   static const String settings = 'settings';
   static const String debts = 'debts';
   static const String debtCategories = 'debt_categories';
+  static const String conversations = 'conversations';
 }
 
 class HiveTypeIds {

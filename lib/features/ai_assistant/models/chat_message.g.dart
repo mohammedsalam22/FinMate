@@ -1,47 +1,47 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'category.dart';
+part of 'chat_message.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class CategoryAdapter extends TypeAdapter<Category> {
+class ChatMessageAdapter extends TypeAdapter<ChatMessage> {
   @override
-  final int typeId = 1;
+  final int typeId = 12;
 
   @override
-  Category read(BinaryReader reader) {
+  ChatMessage read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Category(
+    return ChatMessage(
       id: fields[0] as String,
-      userId: fields[1] as String,
-      name: fields[2] as String,
-      icon: fields[3] as String,
-      color: fields[4] as int,
-      type: fields[5] as CategoryType,
+      content: fields[1] as String,
+      type: fields[2] as MessageType,
+      timestamp: fields[3] as DateTime,
+      isLoading: fields[4] as bool,
+      error: fields[5] as String?,
     );
   }
 
   @override
-  void write(BinaryWriter writer, Category obj) {
+  void write(BinaryWriter writer, ChatMessage obj) {
     writer
       ..writeByte(6)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.userId)
+      ..write(obj.content)
       ..writeByte(2)
-      ..write(obj.name)
+      ..write(obj.type)
       ..writeByte(3)
-      ..write(obj.icon)
+      ..write(obj.timestamp)
       ..writeByte(4)
-      ..write(obj.color)
+      ..write(obj.isLoading)
       ..writeByte(5)
-      ..write(obj.type);
+      ..write(obj.error);
   }
 
   @override
@@ -50,35 +50,40 @@ class CategoryAdapter extends TypeAdapter<Category> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is CategoryAdapter &&
+      other is ChatMessageAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
 
-class CategoryTypeAdapter extends TypeAdapter<CategoryType> {
+class MessageTypeAdapter extends TypeAdapter<MessageType> {
   @override
-  final int typeId = 3;
+  final int typeId = 11;
 
   @override
-  CategoryType read(BinaryReader reader) {
+  MessageType read(BinaryReader reader) {
     switch (reader.readByte()) {
       case 0:
-        return CategoryType.income;
+        return MessageType.user;
       case 1:
-        return CategoryType.expense;
+        return MessageType.ai;
+      case 2:
+        return MessageType.system;
       default:
-        return CategoryType.income;
+        return MessageType.user;
     }
   }
 
   @override
-  void write(BinaryWriter writer, CategoryType obj) {
+  void write(BinaryWriter writer, MessageType obj) {
     switch (obj) {
-      case CategoryType.income:
+      case MessageType.user:
         writer.writeByte(0);
         break;
-      case CategoryType.expense:
+      case MessageType.ai:
         writer.writeByte(1);
+        break;
+      case MessageType.system:
+        writer.writeByte(2);
         break;
     }
   }
@@ -89,7 +94,7 @@ class CategoryTypeAdapter extends TypeAdapter<CategoryType> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is CategoryTypeAdapter &&
+      other is MessageTypeAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

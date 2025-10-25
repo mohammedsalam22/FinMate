@@ -1,4 +1,10 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
 part of 'transaction.dart';
+
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
 
 class FinTransactionAdapter extends TypeAdapter<FinTransaction> {
   @override
@@ -73,7 +79,7 @@ class TransactionTypeAdapter extends TypeAdapter<TransactionType> {
       case 1:
         return TransactionType.expense;
       default:
-        return TransactionType.expense;
+        return TransactionType.income;
     }
   }
 

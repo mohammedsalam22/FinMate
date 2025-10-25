@@ -937,6 +937,367 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Notes'**
   String get notes;
+
+  /// AI Assistant screen title
+  ///
+  /// In en, this message translates to:
+  /// **'AI Assistant'**
+  String get aiAssistant;
+
+  /// AI Assistant input placeholder
+  ///
+  /// In en, this message translates to:
+  /// **'Ask me about your finances...'**
+  String get askMeAboutFinances;
+
+  /// Clear chat button tooltip
+  ///
+  /// In en, this message translates to:
+  /// **'Clear chat'**
+  String get clearChat;
+
+  /// AI Assistant title in empty state
+  ///
+  /// In en, this message translates to:
+  /// **'AI Assistant'**
+  String get aiAssistantTitle;
+
+  /// AI Assistant description in empty state
+  ///
+  /// In en, this message translates to:
+  /// **'Ask me about your finances, add transactions,\nmanage debts, or get insights!'**
+  String get aiAssistantDescription;
+
+  /// Quick action: summarize this week
+  ///
+  /// In en, this message translates to:
+  /// **'Summarize this week'**
+  String get summarizeThisWeek;
+
+  /// Quick action: show spending breakdown
+  ///
+  /// In en, this message translates to:
+  /// **'Show spending breakdown'**
+  String get showSpendingBreakdown;
+
+  /// Quick action: add expense
+  ///
+  /// In en, this message translates to:
+  /// **'Add expense'**
+  String get addExpense;
+
+  /// Quick action: check debts
+  ///
+  /// In en, this message translates to:
+  /// **'Check debts'**
+  String get checkDebts;
+
+  /// Quick action: current balance
+  ///
+  /// In en, this message translates to:
+  /// **'Current balance'**
+  String get currentBalance;
+
+  /// Quick action: top categories
+  ///
+  /// In en, this message translates to:
+  /// **'Top categories'**
+  String get topCategories;
+
+  /// Confirm button label
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm;
+
+  /// Add transaction action title
+  ///
+  /// In en, this message translates to:
+  /// **'Add Transaction'**
+  String get addTransactionAction;
+
+  /// Add debt action title
+  ///
+  /// In en, this message translates to:
+  /// **'Add Debt'**
+  String get addDebtAction;
+
+  /// Record payment action title
+  ///
+  /// In en, this message translates to:
+  /// **'Record Payment'**
+  String get recordPaymentAction;
+
+  /// Query information action title
+  ///
+  /// In en, this message translates to:
+  /// **'Query Information'**
+  String get queryInformationAction;
+
+  /// Unknown action title
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown Action'**
+  String get unknownAction;
+
+  /// Transaction confirmation description
+  ///
+  /// In en, this message translates to:
+  /// **'I will add this transaction to your records:'**
+  String get willAddTransaction;
+
+  /// Debt confirmation description
+  ///
+  /// In en, this message translates to:
+  /// **'I will add this debt to your records:'**
+  String get willAddDebt;
+
+  /// Payment confirmation description
+  ///
+  /// In en, this message translates to:
+  /// **'I will record this payment:'**
+  String get willRecordPayment;
+
+  /// Query confirmation description
+  ///
+  /// In en, this message translates to:
+  /// **'I will provide information about:'**
+  String get willProvideInformation;
+
+  /// Unknown action description
+  ///
+  /// In en, this message translates to:
+  /// **'I cannot understand this action.'**
+  String get cannotUnderstandAction;
+
+  /// Unknown action instruction
+  ///
+  /// In en, this message translates to:
+  /// **'Please try rephrasing your request.'**
+  String get tryRephrasing;
+
+  /// Amount label in confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Amount'**
+  String get amountLabel;
+
+  /// Category label in confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get categoryLabel;
+
+  /// Type label in confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get typeLabel;
+
+  /// Notes label in confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Notes'**
+  String get notesLabel;
+
+  /// Debtor label in confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Debtor'**
+  String get debtorLabel;
+
+  /// Due date label in confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Due Date'**
+  String get dueDateLabel;
+
+  /// Debt ID label in confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Debt ID'**
+  String get debtIdLabel;
+
+  /// Query type label in confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Query Type'**
+  String get queryTypeLabel;
+
+  /// Time range label in confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Time Range'**
+  String get timeRangeLabel;
+
+  /// AI service configuration error
+  ///
+  /// In en, this message translates to:
+  /// **'AI service is not properly configured.'**
+  String get aiServiceNotConfigured;
+
+  /// API key not found error
+  ///
+  /// In en, this message translates to:
+  /// **'API key not found. Please create a .env file with GEMINI_API_KEY=your_key_here'**
+  String get apiKeyNotFound;
+
+  /// API key placeholder error
+  ///
+  /// In en, this message translates to:
+  /// **'Please replace \"your_api_key_here\" in .env file with your actual Google Gemini API key'**
+  String get apiKeyPlaceholder;
+
+  /// AI model initialization error
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to initialize AI model. Please check your API key.'**
+  String get aiModelInitFailed;
+
+  /// General AI error message
+  ///
+  /// In en, this message translates to:
+  /// **'Sorry, I encountered an error. Please try again.'**
+  String get aiEncounteredError;
+
+  /// Invalid API key error
+  ///
+  /// In en, this message translates to:
+  /// **'API key is invalid. Please check your configuration.'**
+  String get apiKeyInvalid;
+
+  /// API quota exceeded error
+  ///
+  /// In en, this message translates to:
+  /// **'API quota exceeded. Please try again later.'**
+  String get apiQuotaExceeded;
+
+  /// Network error message
+  ///
+  /// In en, this message translates to:
+  /// **'Network error. Please check your internet connection.'**
+  String get networkError;
+
+  /// Failed after retries message
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to get response after {attempts} attempts. Please try again later.'**
+  String failedAfterRetries(int attempts);
+
+  /// Unable to process request message
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to process your request. Please try again.'**
+  String get unableToProcessRequest;
+
+  /// AI system prompt template
+  ///
+  /// In en, this message translates to:
+  /// **'You are FinMate\'s AI assistant. Current data: {context}\nCategories: {categories}\n\nFor actions that modify data, use this format: ACTION:TYPE|param1|param2|param3\nAvailable action types: ADD_TRANSACTION, ADD_DEBT, ADD_PAYMENT, QUERY, SUMMARY\n\nExamples:\n- Add expense: ACTION:ADD_TRANSACTION|25.50|groceries|expense|Coffee and sandwich\n- Add income: ACTION:ADD_TRANSACTION|1000|salary|income|Monthly salary\n- Add debt: ACTION:ADD_DEBT|John|500|personal|2024-12-31\n\nIMPORTANT: When user asks to add a transaction, immediately generate the ACTION format. Don\'t ask for clarification unless absolutely necessary.\n\nAlways confirm actions before executing. Keep responses brief and helpful.\n\n{conversationHistory}\nUser: {userMessage}'**
+  String aiSystemPrompt(String context, String categories,
+      String conversationHistory, String userMessage);
+
+  /// Chat history drawer title
+  ///
+  /// In en, this message translates to:
+  /// **'Chat History'**
+  String get chatHistory;
+
+  /// Search chats placeholder
+  ///
+  /// In en, this message translates to:
+  /// **'Search chats...'**
+  String get searchChats;
+
+  /// No conversations found message
+  ///
+  /// In en, this message translates to:
+  /// **'No conversations found.'**
+  String get noConversationsFound;
+
+  /// Delete conversation dialog title
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Conversation?'**
+  String get deleteConversationTitle;
+
+  /// Delete conversation confirmation message
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete this conversation? This action cannot be undone.'**
+  String get deleteConversationMessage;
+
+  /// Conversation deleted success message
+  ///
+  /// In en, this message translates to:
+  /// **'Conversation \"{title}\" deleted'**
+  String conversationDeleted(String title);
+
+  /// Default title for untitled chat
+  ///
+  /// In en, this message translates to:
+  /// **'Untitled Chat'**
+  String get untitledChat;
+
+  /// Executing action message
+  ///
+  /// In en, this message translates to:
+  /// **'Executing action...'**
+  String get executingAction;
+
+  /// Failed to execute action error
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to execute action: {error}'**
+  String failedToExecuteAction(String error);
+
+  /// AI responding placeholder text
+  ///
+  /// In en, this message translates to:
+  /// **'AI is responding...'**
+  String get aiResponding;
+
+  /// Start new chat tooltip
+  ///
+  /// In en, this message translates to:
+  /// **'Start new chat'**
+  String get startNewChat;
+
+  /// Quick action prompt for summarizing this week
+  ///
+  /// In en, this message translates to:
+  /// **'Give me a summary of my spending this week'**
+  String get summarizeThisWeekPrompt;
+
+  /// Quick action prompt for showing spending breakdown
+  ///
+  /// In en, this message translates to:
+  /// **'Show me my spending breakdown by category'**
+  String get showSpendingBreakdownPrompt;
+
+  /// Quick action prompt for adding expense
+  ///
+  /// In en, this message translates to:
+  /// **'Help me add a new expense'**
+  String get addExpensePrompt;
+
+  /// Quick action prompt for checking debts
+  ///
+  /// In en, this message translates to:
+  /// **'Show me all my outstanding debts'**
+  String get checkDebtsPrompt;
+
+  /// Quick action prompt for current balance
+  ///
+  /// In en, this message translates to:
+  /// **'What is my current balance?'**
+  String get currentBalancePrompt;
+
+  /// Quick action prompt for top categories
+  ///
+  /// In en, this message translates to:
+  /// **'What are my top spending categories this month?'**
+  String get topCategoriesPrompt;
 }
 
 class _AppLocalizationsDelegate

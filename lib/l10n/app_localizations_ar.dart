@@ -465,4 +465,200 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get notes => 'ملاحظات';
+
+  @override
+  String get aiAssistant => 'المساعد الذكي';
+
+  @override
+  String get askMeAboutFinances => 'اسألني عن أموالك...';
+
+  @override
+  String get clearChat => 'مسح المحادثة';
+
+  @override
+  String get aiAssistantTitle => 'المساعد الذكي';
+
+  @override
+  String get aiAssistantDescription =>
+      'اسألني عن أموالك، أضف المعاملات،\nأدر الديون، أو احصل على رؤى!';
+
+  @override
+  String get summarizeThisWeek => 'ملخص هذا الأسبوع';
+
+  @override
+  String get showSpendingBreakdown => 'عرض تفصيل المصروفات';
+
+  @override
+  String get addExpense => 'إضافة مصروف';
+
+  @override
+  String get checkDebts => 'فحص الديون';
+
+  @override
+  String get currentBalance => 'الرصيد الحالي';
+
+  @override
+  String get topCategories => 'أهم الفئات';
+
+  @override
+  String get confirm => 'تأكيد';
+
+  @override
+  String get addTransactionAction => 'إضافة معاملة';
+
+  @override
+  String get addDebtAction => 'إضافة دين';
+
+  @override
+  String get recordPaymentAction => 'تسجيل دفعة';
+
+  @override
+  String get queryInformationAction => 'استعلام المعلومات';
+
+  @override
+  String get unknownAction => 'إجراء غير معروف';
+
+  @override
+  String get willAddTransaction => 'سأضيف هذه المعاملة إلى سجلاتك:';
+
+  @override
+  String get willAddDebt => 'سأضيف هذا الدين إلى سجلاتك:';
+
+  @override
+  String get willRecordPayment => 'سأسجل هذه الدفعة:';
+
+  @override
+  String get willProvideInformation => 'سأقدم معلومات حول:';
+
+  @override
+  String get cannotUnderstandAction => 'لا أستطيع فهم هذا الإجراء.';
+
+  @override
+  String get tryRephrasing => 'يرجى إعادة صياغة طلبك.';
+
+  @override
+  String get amountLabel => 'المبلغ';
+
+  @override
+  String get categoryLabel => 'الفئة';
+
+  @override
+  String get typeLabel => 'النوع';
+
+  @override
+  String get notesLabel => 'ملاحظات';
+
+  @override
+  String get debtorLabel => 'المدين';
+
+  @override
+  String get dueDateLabel => 'تاريخ الاستحقاق';
+
+  @override
+  String get debtIdLabel => 'معرف الدين';
+
+  @override
+  String get queryTypeLabel => 'نوع الاستعلام';
+
+  @override
+  String get timeRangeLabel => 'النطاق الزمني';
+
+  @override
+  String get aiServiceNotConfigured =>
+      'خدمة الذكاء الاصطناعي غير مُعدة بشكل صحيح.';
+
+  @override
+  String get apiKeyNotFound =>
+      'مفتاح API غير موجود. يرجى إنشاء ملف .env مع GEMINI_API_KEY=your_key_here';
+
+  @override
+  String get apiKeyPlaceholder =>
+      'يرجى استبدال \"your_api_key_here\" في ملف .env بمفتاح Google Gemini API الفعلي';
+
+  @override
+  String get aiModelInitFailed =>
+      'فشل في تهيئة نموذج الذكاء الاصطناعي. يرجى التحقق من مفتاح API.';
+
+  @override
+  String get aiEncounteredError => 'عذراً، واجهت خطأ. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get apiKeyInvalid => 'مفتاح API غير صحيح. يرجى التحقق من إعداداتك.';
+
+  @override
+  String get apiQuotaExceeded => 'تم تجاوز حصة API. يرجى المحاولة لاحقاً.';
+
+  @override
+  String get networkError => 'خطأ في الشبكة. يرجى التحقق من اتصال الإنترنت.';
+
+  @override
+  String failedAfterRetries(int attempts) {
+    return 'فشل في الحصول على استجابة بعد $attempts محاولات. يرجى المحاولة لاحقاً.';
+  }
+
+  @override
+  String get unableToProcessRequest =>
+      'غير قادر على معالجة طلبك. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String aiSystemPrompt(String context, String categories,
+      String conversationHistory, String userMessage) {
+    return 'أنت مساعد FinMate الذكي. البيانات الحالية: $context\nالفئات المتاحة: $categories\n\nللإجراءات التي تعدل البيانات، استخدم هذا التنسيق: ACTION:TYPE|param1|param2|param3\nأنواع الإجراءات المتاحة: ADD_TRANSACTION, ADD_DEBT, ADD_PAYMENT, QUERY, SUMMARY\n\nأمثلة:\n- إضافة مصروف: ACTION:ADD_TRANSACTION|25.50|groceries|expense|قهوة وساندويتش\n- إضافة دخل: ACTION:ADD_TRANSACTION|1000|salary|income|راتب شهري\n- إضافة دين: ACTION:ADD_DEBT|أحمد|500|personal|2024-12-31\n\nمهم جداً: عندما يطلب المستخدم إضافة معاملة، قم بتوليد تنسيق ACTION فوراً. لا تطلب توضيحات إضافية إلا إذا كان ذلك ضرورياً تماماً.\n\nتأكد دائماً من الإجراءات قبل التنفيذ. اجعل الردود مختصرة ومفيدة ومفهومة.\n\n$conversationHistory\nالمستخدم: $userMessage';
+  }
+
+  @override
+  String get chatHistory => 'تاريخ المحادثات';
+
+  @override
+  String get searchChats => 'البحث في المحادثات...';
+
+  @override
+  String get noConversationsFound => 'لم يتم العثور على محادثات.';
+
+  @override
+  String get deleteConversationTitle => 'حذف المحادثة؟';
+
+  @override
+  String get deleteConversationMessage =>
+      'هل أنت متأكد من أنك تريد حذف هذه المحادثة؟ لا يمكن التراجع عن هذا الإجراء.';
+
+  @override
+  String conversationDeleted(String title) {
+    return 'تم حذف المحادثة \"$title\"';
+  }
+
+  @override
+  String get untitledChat => 'محادثة بدون عنوان';
+
+  @override
+  String get executingAction => 'تنفيذ الإجراء...';
+
+  @override
+  String failedToExecuteAction(String error) {
+    return 'فشل في تنفيذ الإجراء: $error';
+  }
+
+  @override
+  String get aiResponding => 'الذكاء الاصطناعي يرد...';
+
+  @override
+  String get startNewChat => 'بدء محادثة جديدة';
+
+  @override
+  String get summarizeThisWeekPrompt => 'أعطني ملخصاً لمصروفاتي هذا الأسبوع';
+
+  @override
+  String get showSpendingBreakdownPrompt => 'أرني تفصيل مصروفاتي حسب الفئة';
+
+  @override
+  String get addExpensePrompt => 'ساعدني في إضافة مصروف جديد';
+
+  @override
+  String get checkDebtsPrompt => 'أرني جميع ديوني المستحقة';
+
+  @override
+  String get currentBalancePrompt => 'ما هو رصيدي الحالي؟';
+
+  @override
+  String get topCategoriesPrompt => 'ما هي أهم فئات مصروفاتي هذا الشهر؟';
 }

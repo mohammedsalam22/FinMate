@@ -654,5 +654,274 @@
   "notes": "Notes",
   "@notes": {
     "description": "Notes label"
+  },
+  "aiAssistant": "AI Assistant",
+  "@aiAssistant": {
+    "description": "AI Assistant screen title"
+  },
+  "askMeAboutFinances": "Ask me about your finances...",
+  "@askMeAboutFinances": {
+    "description": "AI Assistant input placeholder"
+  },
+  "clearChat": "Clear chat",
+  "@clearChat": {
+    "description": "Clear chat button tooltip"
+  },
+  "aiAssistantTitle": "AI Assistant",
+  "@aiAssistantTitle": {
+    "description": "AI Assistant title in empty state"
+  },
+  "aiAssistantDescription": "Ask me about your finances, add transactions,\nmanage debts, or get insights!",
+  "@aiAssistantDescription": {
+    "description": "AI Assistant description in empty state"
+  },
+  "summarizeThisWeek": "Summarize this week",
+  "@summarizeThisWeek": {
+    "description": "Quick action: summarize this week"
+  },
+  "showSpendingBreakdown": "Show spending breakdown",
+  "@showSpendingBreakdown": {
+    "description": "Quick action: show spending breakdown"
+  },
+  "addExpense": "Add expense",
+  "@addExpense": {
+    "description": "Quick action: add expense"
+  },
+  "checkDebts": "Check debts",
+  "@checkDebts": {
+    "description": "Quick action: check debts"
+  },
+  "currentBalance": "Current balance",
+  "@currentBalance": {
+    "description": "Quick action: current balance"
+  },
+  "topCategories": "Top categories",
+  "@topCategories": {
+    "description": "Quick action: top categories"
+  },
+  "confirm": "Confirm",
+  "@confirm": {
+    "description": "Confirm button label"
+  },
+  "addTransactionAction": "Add Transaction",
+  "@addTransactionAction": {
+    "description": "Add transaction action title"
+  },
+  "addDebtAction": "Add Debt",
+  "@addDebtAction": {
+    "description": "Add debt action title"
+  },
+  "recordPaymentAction": "Record Payment",
+  "@recordPaymentAction": {
+    "description": "Record payment action title"
+  },
+  "queryInformationAction": "Query Information",
+  "@queryInformationAction": {
+    "description": "Query information action title"
+  },
+  "unknownAction": "Unknown Action",
+  "@unknownAction": {
+    "description": "Unknown action title"
+  },
+  "willAddTransaction": "I will add this transaction to your records:",
+  "@willAddTransaction": {
+    "description": "Transaction confirmation description"
+  },
+  "willAddDebt": "I will add this debt to your records:",
+  "@willAddDebt": {
+    "description": "Debt confirmation description"
+  },
+  "willRecordPayment": "I will record this payment:",
+  "@willRecordPayment": {
+    "description": "Payment confirmation description"
+  },
+  "willProvideInformation": "I will provide information about:",
+  "@willProvideInformation": {
+    "description": "Query confirmation description"
+  },
+  "cannotUnderstandAction": "I cannot understand this action.",
+  "@cannotUnderstandAction": {
+    "description": "Unknown action description"
+  },
+  "tryRephrasing": "Please try rephrasing your request.",
+  "@tryRephrasing": {
+    "description": "Unknown action instruction"
+  },
+  "amountLabel": "Amount",
+  "@amountLabel": {
+    "description": "Amount label in confirmation dialog"
+  },
+  "categoryLabel": "Category",
+  "@categoryLabel": {
+    "description": "Category label in confirmation dialog"
+  },
+  "typeLabel": "Type",
+  "@typeLabel": {
+    "description": "Type label in confirmation dialog"
+  },
+  "notesLabel": "Notes",
+  "@notesLabel": {
+    "description": "Notes label in confirmation dialog"
+  },
+  "debtorLabel": "Debtor",
+  "@debtorLabel": {
+    "description": "Debtor label in confirmation dialog"
+  },
+  "dueDateLabel": "Due Date",
+  "@dueDateLabel": {
+    "description": "Due date label in confirmation dialog"
+  },
+  "debtIdLabel": "Debt ID",
+  "@debtIdLabel": {
+    "description": "Debt ID label in confirmation dialog"
+  },
+  "queryTypeLabel": "Query Type",
+  "@queryTypeLabel": {
+    "description": "Query type label in confirmation dialog"
+  },
+  "timeRangeLabel": "Time Range",
+  "@timeRangeLabel": {
+    "description": "Time range label in confirmation dialog"
+  },
+  "aiServiceNotConfigured": "AI service is not properly configured.",
+  "@aiServiceNotConfigured": {
+    "description": "AI service configuration error"
+  },
+  "apiKeyNotFound": "API key not found. Please create a .env file with GEMINI_API_KEY=your_key_here",
+  "@apiKeyNotFound": {
+    "description": "API key not found error"
+  },
+  "apiKeyPlaceholder": "Please replace \"your_api_key_here\" in .env file with your actual Google Gemini API key",
+  "@apiKeyPlaceholder": {
+    "description": "API key placeholder error"
+  },
+  "aiModelInitFailed": "Failed to initialize AI model. Please check your API key.",
+  "@aiModelInitFailed": {
+    "description": "AI model initialization error"
+  },
+  "aiEncounteredError": "Sorry, I encountered an error. Please try again.",
+  "@aiEncounteredError": {
+    "description": "General AI error message"
+  },
+  "apiKeyInvalid": "API key is invalid. Please check your configuration.",
+  "@apiKeyInvalid": {
+    "description": "Invalid API key error"
+  },
+  "apiQuotaExceeded": "API quota exceeded. Please try again later.",
+  "@apiQuotaExceeded": {
+    "description": "API quota exceeded error"
+  },
+  "networkError": "Network error. Please check your internet connection.",
+  "@networkError": {
+    "description": "Network error message"
+  },
+  "failedAfterRetries": "Failed to get response after {attempts} attempts. Please try again later.",
+  "@failedAfterRetries": {
+    "description": "Failed after retries message",
+    "placeholders": {
+      "attempts": {
+        "type": "int"
+      }
+    }
+  },
+  "unableToProcessRequest": "Unable to process your request. Please try again.",
+  "@unableToProcessRequest": {
+    "description": "Unable to process request message"
+  },
+  "aiSystemPrompt": "You are FinMate's AI assistant. Current data: {context}\nCategories: {categories}\n\nFor actions that modify data, use this format: ACTION:TYPE|param1|param2|param3\nAvailable action types: ADD_TRANSACTION, ADD_DEBT, ADD_PAYMENT, QUERY, SUMMARY\n\nExamples:\n- Add expense: ACTION:ADD_TRANSACTION|25.50|groceries|expense|Coffee and sandwich\n- Add income: ACTION:ADD_TRANSACTION|1000|salary|income|Monthly salary\n- Add debt: ACTION:ADD_DEBT|John|500|personal|2024-12-31\n\nIMPORTANT: When user asks to add a transaction, immediately generate the ACTION format. Don't ask for clarification unless absolutely necessary.\n\nAlways confirm actions before executing. Keep responses brief and helpful.\n\n{conversationHistory}\nUser: {userMessage}",
+  "@aiSystemPrompt": {
+    "description": "AI system prompt template",
+    "placeholders": {
+      "context": {
+        "type": "String"
+      },
+      "categories": {
+        "type": "String"
+      },
+      "conversationHistory": {
+        "type": "String"
+      },
+      "userMessage": {
+        "type": "String"
+      }
+    }
+  },
+  "chatHistory": "Chat History",
+  "@chatHistory": {
+    "description": "Chat history drawer title"
+  },
+  "searchChats": "Search chats...",
+  "@searchChats": {
+    "description": "Search chats placeholder"
+  },
+  "noConversationsFound": "No conversations found.",
+  "@noConversationsFound": {
+    "description": "No conversations found message"
+  },
+  "deleteConversationTitle": "Delete Conversation?",
+  "@deleteConversationTitle": {
+    "description": "Delete conversation dialog title"
+  },
+  "deleteConversationMessage": "Are you sure you want to delete this conversation? This action cannot be undone.",
+  "@deleteConversationMessage": {
+    "description": "Delete conversation confirmation message"
+  },
+  "conversationDeleted": "Conversation \"{title}\" deleted",
+  "@conversationDeleted": {
+    "description": "Conversation deleted success message",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "untitledChat": "Untitled Chat",
+  "@untitledChat": {
+    "description": "Default title for untitled chat"
+  },
+  "executingAction": "Executing action...",
+  "@executingAction": {
+    "description": "Executing action message"
+  },
+  "failedToExecuteAction": "Failed to execute action: {error}",
+  "@failedToExecuteAction": {
+    "description": "Failed to execute action error",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "aiResponding": "AI is responding...",
+  "@aiResponding": {
+    "description": "AI responding placeholder text"
+  },
+  "startNewChat": "Start new chat",
+  "@startNewChat": {
+    "description": "Start new chat tooltip"
+  },
+  "summarizeThisWeekPrompt": "Give me a summary of my spending this week",
+  "@summarizeThisWeekPrompt": {
+    "description": "Quick action prompt for summarizing this week"
+  },
+  "showSpendingBreakdownPrompt": "Show me my spending breakdown by category",
+  "@showSpendingBreakdownPrompt": {
+    "description": "Quick action prompt for showing spending breakdown"
+  },
+  "addExpensePrompt": "Help me add a new expense",
+  "@addExpensePrompt": {
+    "description": "Quick action prompt for adding expense"
+  },
+  "checkDebtsPrompt": "Show me all my outstanding debts",
+  "@checkDebtsPrompt": {
+    "description": "Quick action prompt for checking debts"
+  },
+  "currentBalancePrompt": "What is my current balance?",
+  "@currentBalancePrompt": {
+    "description": "Quick action prompt for current balance"
+  },
+  "topCategoriesPrompt": "What are my top spending categories this month?",
+  "@topCategoriesPrompt": {
+    "description": "Quick action prompt for top categories"
   }
 }

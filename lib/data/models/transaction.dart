@@ -2,8 +2,11 @@ import 'package:hive/hive.dart';
 
 part 'transaction.g.dart';
 
+@HiveType(typeId: 4)
 enum TransactionType {
+  @HiveField(0)
   income,
+  @HiveField(1)
   expense,
 }
 

@@ -1,41 +1,50 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user.dart';
+part of 'conversation.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class UserAdapter extends TypeAdapter<User> {
+class ConversationAdapter extends TypeAdapter<Conversation> {
   @override
-  final int typeId = 0;
+  final int typeId = 10;
 
   @override
-  User read(BinaryReader reader) {
+  Conversation read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return User(
+    return Conversation(
       id: fields[0] as String,
-      email: fields[1] as String?,
-      createdAt: fields[2] as DateTime,
-      settings: (fields[3] as Map?)?.cast<String, dynamic>(),
+      userId: fields[1] as String,
+      messages: (fields[2] as List).cast<ChatMessage>(),
+      createdAt: fields[3] as DateTime,
+      updatedAt: fields[4] as DateTime,
+      title: fields[5] as String?,
+      isActive: fields[6] as bool,
     );
   }
 
   @override
-  void write(BinaryWriter writer, User obj) {
+  void write(BinaryWriter writer, Conversation obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.email)
+      ..write(obj.userId)
       ..writeByte(2)
-      ..write(obj.createdAt)
+      ..write(obj.messages)
       ..writeByte(3)
-      ..write(obj.settings);
+      ..write(obj.createdAt)
+      ..writeByte(4)
+      ..write(obj.updatedAt)
+      ..writeByte(5)
+      ..write(obj.title)
+      ..writeByte(6)
+      ..write(obj.isActive);
   }
 
   @override
@@ -44,7 +53,7 @@ class UserAdapter extends TypeAdapter<User> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is UserAdapter &&
+      other is ConversationAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

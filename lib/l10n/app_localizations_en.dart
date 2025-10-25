@@ -468,4 +468,206 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get notes => 'Notes';
+
+  @override
+  String get aiAssistant => 'AI Assistant';
+
+  @override
+  String get askMeAboutFinances => 'Ask me about your finances...';
+
+  @override
+  String get clearChat => 'Clear chat';
+
+  @override
+  String get aiAssistantTitle => 'AI Assistant';
+
+  @override
+  String get aiAssistantDescription =>
+      'Ask me about your finances, add transactions,\nmanage debts, or get insights!';
+
+  @override
+  String get summarizeThisWeek => 'Summarize this week';
+
+  @override
+  String get showSpendingBreakdown => 'Show spending breakdown';
+
+  @override
+  String get addExpense => 'Add expense';
+
+  @override
+  String get checkDebts => 'Check debts';
+
+  @override
+  String get currentBalance => 'Current balance';
+
+  @override
+  String get topCategories => 'Top categories';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get addTransactionAction => 'Add Transaction';
+
+  @override
+  String get addDebtAction => 'Add Debt';
+
+  @override
+  String get recordPaymentAction => 'Record Payment';
+
+  @override
+  String get queryInformationAction => 'Query Information';
+
+  @override
+  String get unknownAction => 'Unknown Action';
+
+  @override
+  String get willAddTransaction =>
+      'I will add this transaction to your records:';
+
+  @override
+  String get willAddDebt => 'I will add this debt to your records:';
+
+  @override
+  String get willRecordPayment => 'I will record this payment:';
+
+  @override
+  String get willProvideInformation => 'I will provide information about:';
+
+  @override
+  String get cannotUnderstandAction => 'I cannot understand this action.';
+
+  @override
+  String get tryRephrasing => 'Please try rephrasing your request.';
+
+  @override
+  String get amountLabel => 'Amount';
+
+  @override
+  String get categoryLabel => 'Category';
+
+  @override
+  String get typeLabel => 'Type';
+
+  @override
+  String get notesLabel => 'Notes';
+
+  @override
+  String get debtorLabel => 'Debtor';
+
+  @override
+  String get dueDateLabel => 'Due Date';
+
+  @override
+  String get debtIdLabel => 'Debt ID';
+
+  @override
+  String get queryTypeLabel => 'Query Type';
+
+  @override
+  String get timeRangeLabel => 'Time Range';
+
+  @override
+  String get aiServiceNotConfigured => 'AI service is not properly configured.';
+
+  @override
+  String get apiKeyNotFound =>
+      'API key not found. Please create a .env file with GEMINI_API_KEY=your_key_here';
+
+  @override
+  String get apiKeyPlaceholder =>
+      'Please replace \"your_api_key_here\" in .env file with your actual Google Gemini API key';
+
+  @override
+  String get aiModelInitFailed =>
+      'Failed to initialize AI model. Please check your API key.';
+
+  @override
+  String get aiEncounteredError =>
+      'Sorry, I encountered an error. Please try again.';
+
+  @override
+  String get apiKeyInvalid =>
+      'API key is invalid. Please check your configuration.';
+
+  @override
+  String get apiQuotaExceeded => 'API quota exceeded. Please try again later.';
+
+  @override
+  String get networkError =>
+      'Network error. Please check your internet connection.';
+
+  @override
+  String failedAfterRetries(int attempts) {
+    return 'Failed to get response after $attempts attempts. Please try again later.';
+  }
+
+  @override
+  String get unableToProcessRequest =>
+      'Unable to process your request. Please try again.';
+
+  @override
+  String aiSystemPrompt(String context, String categories,
+      String conversationHistory, String userMessage) {
+    return 'You are FinMate\'s AI assistant. Current data: $context\nCategories: $categories\n\nFor actions that modify data, use this format: ACTION:TYPE|param1|param2|param3\nAvailable action types: ADD_TRANSACTION, ADD_DEBT, ADD_PAYMENT, QUERY, SUMMARY\n\nExamples:\n- Add expense: ACTION:ADD_TRANSACTION|25.50|groceries|expense|Coffee and sandwich\n- Add income: ACTION:ADD_TRANSACTION|1000|salary|income|Monthly salary\n- Add debt: ACTION:ADD_DEBT|John|500|personal|2024-12-31\n\nIMPORTANT: When user asks to add a transaction, immediately generate the ACTION format. Don\'t ask for clarification unless absolutely necessary.\n\nAlways confirm actions before executing. Keep responses brief and helpful.\n\n$conversationHistory\nUser: $userMessage';
+  }
+
+  @override
+  String get chatHistory => 'Chat History';
+
+  @override
+  String get searchChats => 'Search chats...';
+
+  @override
+  String get noConversationsFound => 'No conversations found.';
+
+  @override
+  String get deleteConversationTitle => 'Delete Conversation?';
+
+  @override
+  String get deleteConversationMessage =>
+      'Are you sure you want to delete this conversation? This action cannot be undone.';
+
+  @override
+  String conversationDeleted(String title) {
+    return 'Conversation \"$title\" deleted';
+  }
+
+  @override
+  String get untitledChat => 'Untitled Chat';
+
+  @override
+  String get executingAction => 'Executing action...';
+
+  @override
+  String failedToExecuteAction(String error) {
+    return 'Failed to execute action: $error';
+  }
+
+  @override
+  String get aiResponding => 'AI is responding...';
+
+  @override
+  String get startNewChat => 'Start new chat';
+
+  @override
+  String get summarizeThisWeekPrompt =>
+      'Give me a summary of my spending this week';
+
+  @override
+  String get showSpendingBreakdownPrompt =>
+      'Show me my spending breakdown by category';
+
+  @override
+  String get addExpensePrompt => 'Help me add a new expense';
+
+  @override
+  String get checkDebtsPrompt => 'Show me all my outstanding debts';
+
+  @override
+  String get currentBalancePrompt => 'What is my current balance?';
+
+  @override
+  String get topCategoriesPrompt =>
+      'What are my top spending categories this month?';
 }
