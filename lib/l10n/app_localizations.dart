@@ -752,6 +752,18 @@ abstract class AppLocalizations {
   /// **'Yesterday'**
   String get yesterday;
 
+  /// This week label for grouped conversations
+  ///
+  /// In en, this message translates to:
+  /// **'This Week'**
+  String get thisWeek;
+
+  /// This month label for grouped conversations
+  ///
+  /// In en, this message translates to:
+  /// **'This Month'**
+  String get thisMonth;
+
   /// Add transaction screen title
   ///
   /// In en, this message translates to:
@@ -1238,6 +1250,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Untitled Chat'**
   String get untitledChat;
+
+  /// Open item label
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get open;
+
+  /// Relative time label for seconds/minutes ago
+  ///
+  /// In en, this message translates to:
+  /// **'Just now'**
+  String get justNow;
+
+  /// Title for delete debt confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Debt?'**
+  String get deleteDebtTitle;
+
+  /// Title for delete payment confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Payment?'**
+  String get deletePaymentTitle;
+
+  /// Body text for delete debt confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'This will permanently delete this debt record and all its payment history. This action cannot be undone.'**
+  String get deleteDebtMessage;
+
+  /// Body text for delete payment confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'This will permanently delete this payment record. This action cannot be undone.'**
+  String get deletePaymentMessage;
 
   /// Executing action message
   ///

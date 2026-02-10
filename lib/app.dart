@@ -97,7 +97,7 @@ final _router = GoRouter(
         final personName = state.pathParameters['personName'];
         return PersonTimelineScreen(
           categoryId: categoryId!,
-          personName: Uri.decodeComponent(personName!),
+          personName: personName!,
         );
       },
     ),
@@ -160,7 +160,7 @@ class _MainShellState extends State<MainShell> {
           NeumorphicNavItem(
             icon: Icons.smart_toy_outlined,
             selectedIcon: Icons.smart_toy,
-            label: 'AI',
+            label: l10n.aiAssistant,
           ),
         ],
       ),

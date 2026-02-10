@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pocketsage/features/ai_assistant/models/ai_action.dart';
+import 'package:pocketsage/l10n/app_localizations.dart';
 
 class ActionConfirmationDialog extends StatelessWidget {
   final AiAction action;
@@ -15,123 +16,158 @@ class ActionConfirmationDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return AlertDialog(
-      title: Text(_getTitle()),
+      title: Text(_getTitle(l10n)),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(_getDescription()),
+          Text(_getDescription(l10n)),
           const SizedBox(height: 16),
-          _buildDetails(),
+          _buildDetails(l10n),
         ],
       ),
       actions: [
         TextButton(
           onPressed: onCancel,
-          child: const Text('Cancel'),
+          child: Text(l10n.cancel),
         ),
         ElevatedButton(
           onPressed: onConfirm,
-          child: const Text('Confirm'),
+          child: Text(l10n.confirm),
         ),
       ],
     );
   }
 
-  String _getTitle() {
+  String _getTitle(AppLocalizations l10n) {
     switch (action.type) {
       case ActionType.addTransaction:
-        return 'Add Transaction';
+        return l10n.addTransactionAction;
       case ActionType.addDebt:
-        return 'Add Debt';
+        return l10n.addDebtAction;
       case ActionType.addPayment:
-        return 'Record Payment';
+        return l10n.recordPaymentAction;
       case ActionType.query:
       case ActionType.summary:
-        return 'Query Information';
+        return l10n.queryInformationAction;
       case ActionType.unknown:
-        return 'Unknown Action';
+        return l10n.unknownAction;
     }
   }
 
-  String _getDescription() {
+  String _getDescription(AppLocalizations l10n) {
     switch (action.type) {
       case ActionType.addTransaction:
-        return 'I will add this transaction to your records:';
+        return l10n.willAddTransaction;
       case ActionType.addDebt:
-        return 'I will add this debt to your records:';
+        return l10n.willAddDebt;
       case ActionType.addPayment:
-        return 'I will record this payment:';
+        return l10n.willRecordPayment;
       case ActionType.query:
       case ActionType.summary:
-        return 'I will provide information about:';
+        return l10n.willProvideInformation;
       case ActionType.unknown:
-        return 'I cannot understand this action.';
+        return l10n.cannotUnderstandAction;
     }
   }
 
-  Widget _buildDetails() {
+  Widget _buildDetails(AppLocalizations l10n) {
     switch (action.type) {
       case ActionType.addTransaction:
-        return _buildTransactionDetails();
+        return _buildTransactionDetails(l10n);
       case ActionType.addDebt:
-        return _buildDebtDetails();
+        return _buildDebtDetails(l10n);
       case ActionType.addPayment:
-        return _buildPaymentDetails();
+        return _buildPaymentDetails(l10n);
       case ActionType.query:
       case ActionType.summary:
-        return _buildQueryDetails();
+        return _buildQueryDetails(l10n);
       case ActionType.unknown:
-        return const Text('Please try rephrasing your request.');
+        return Text(l10n.tryRephrasing);
     }
   }
 
-  Widget _buildTransactionDetails() {
+  Widget _buildTransactionDetails(AppLocalizations l10n) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _buildDetailRow(
-            'Amount', '€${action.amount?.toStringAsFixed(2) ?? 'N/A'}'),
-        _buildDetailRow('Category', action.category ?? 'N/A'),
-        _buildDetailRow('Type', action.transactionType ?? 'N/A'),
-        if (action.notes != null) _buildDetailRow('Notes', action.notes!),
+          l10n.amountLabel,
+          '€${action.amount?.toStringAsFixed(2) ?? 'N/A'}',
+        ),
+        _buildDetailRow(
+          l10n.categoryLabel,
+          action.category ?? l10n.unknown,
+        ),
+        _buildDetailRow(
+          l10n.typeLabel,
+          action.transactionType ?? l10n.unknown,
+        ),
+        if (action.notes != null)
+          _buildDetailRow(
+            l10n.notesLabel,
+            action.notes!,
+          ),
       ],
     );
   }
 
-  Widget _buildDebtDetails() {
+  Widget _buildDebtDetails(AppLocalizations l10n) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildDetailRow('Debtor', action.debtorName ?? 'N/A'),
         _buildDetailRow(
-            'Amount', '€${action.amount?.toStringAsFixed(2) ?? 'N/A'}'),
-        _buildDetailRow('Category', action.debtCategory ?? 'N/A'),
+          l10n.debtorLabel,
+          action.debtorName ?? l10n.unknown,
+        ),
+        _buildDetailRow(
+          l10n.amountLabel,
+          '€${action.amount?.toStringAsFixed(2) ?? 'N/A'}',
+        ),
+        _buildDetailRow(
+          l10n.categoryLabel,
+          action.debtCategory ?? l10n.unknown,
+        ),
         if (action.dueDate != null)
           _buildDetailRow(
-              'Due Date', action.dueDate!.toLocal().toString().split(' ')[0]),
+            l10n.dueDateLabel,
+            action.dueDate!.toLocal().toString().split(' ')[0],
+          ),
       ],
     );
   }
 
-  Widget _buildPaymentDetails() {
+  Widget _buildPaymentDetails(AppLocalizations l10n) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildDetailRow('Amount', '€${action.paymentAmount ?? 'N/A'}'),
-        _buildDetailRow('Debt ID', action.debtId ?? 'N/A'),
+        _buildDetailRow(
+          l10n.amountLabel,
+          '€${action.paymentAmount ?? 'N/A'}',
+        ),
+        _buildDetailRow(
+          l10n.debtIdLabel,
+          action.debtId ?? l10n.unknown,
+        ),
       ],
     );
   }
 
-  Widget _buildQueryDetails() {
+  Widget _buildQueryDetails(AppLocalizations l10n) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildDetailRow('Query Type', action.queryType ?? 'N/A'),
+        _buildDetailRow(
+          l10n.queryTypeLabel,
+          action.queryType ?? l10n.unknown,
+        ),
         if (action.timeRange != null)
-          _buildDetailRow('Time Range', action.timeRange!),
+          _buildDetailRow(
+            l10n.timeRangeLabel,
+            action.timeRange!,
+          ),
       ],
     );
   }

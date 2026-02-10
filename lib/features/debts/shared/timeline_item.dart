@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:pocketsage/data/models/debt.dart';
 import 'package:pocketsage/core/theme/theme.dart';
+import 'package:pocketsage/l10n/app_localizations.dart';
 
 class TimelineItem extends StatelessWidget {
   final DebtHistoryItem historyItem;
@@ -193,22 +194,28 @@ class TimelineItem extends StatelessWidget {
           final confirmed = await showDialog<bool>(
             context: context,
             builder: (context) => AlertDialog(
-              title: Text(isDebtCreated ? 'Delete Debt?' : 'Delete Payment?'),
+              title: Text(
+                isDebtCreated
+                    ? AppLocalizations.of(context)!.deleteDebtTitle
+                    : AppLocalizations.of(context)!.deletePaymentTitle,
+              ),
               content: Text(
                 isDebtCreated
-                    ? 'This will permanently delete this debt record and all its payment history. This action cannot be undone.'
-                    : 'This will permanently delete this payment record. This action cannot be undone.',
+                    ? AppLocalizations.of(context)!.deleteDebtMessage
+                    : AppLocalizations.of(context)!.deletePaymentMessage,
               ),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.of(context).pop(false),
-                  child: const Text('Cancel'),
+                  child: Text(AppLocalizations.of(context)!.cancel),
                 ),
                 ElevatedButton(
                   onPressed: () => Navigator.of(context).pop(true),
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                  child: const Text('Delete',
-                      style: TextStyle(color: Colors.white)),
+                  child: Text(
+                    AppLocalizations.of(context)!.delete,
+                    style: const TextStyle(color: Colors.white),
+                  ),
                 ),
               ],
             ),

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:pocketsage/providers/providers.dart';
 import 'package:pocketsage/data/models/debt_category.dart';
 import 'package:pocketsage/core/theme/theme.dart';
+import 'package:pocketsage/l10n/app_localizations.dart';
 
 class DebtCategoryCard extends ConsumerStatefulWidget {
   final DebtCategory category;
@@ -20,6 +21,15 @@ class _DebtCategoryCardState extends ConsumerState<DebtCategoryCard> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final categoryRepo = ref.watch(debtCategoryRepositoryProvider);
     final stats = categoryRepo.getCategoryStats(widget.category.id);
+     final l10n = AppLocalizations.of(context)!;
+
+    final totalDebts = (stats['totalDebts'] ?? 0) as int;
+    final totalRemaining = (stats['totalRemaining'] ?? 0.0) as double;
+    final totalOwed = (stats['totalOwed'] ?? 0.0) as double;
+
+    final debtsLabel = totalDebts == 1
+        ? l10n.debtCount(totalDebts)
+        : l10n.debtsCount(totalDebts);
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
@@ -64,7 +74,7 @@ class _DebtCategoryCardState extends ConsumerState<DebtCategoryCard> {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            '${stats['totalDebts']} debt${stats['totalDebts'] == 1 ? '' : 's'} • €${stats['totalRemaining']?.toStringAsFixed(0) ?? '0'} remaining',
+                            '$debtsLabel • €${totalRemaining.toStringAsFixed(0)} ${l10n.remaining}',
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyMedium
@@ -80,22 +90,41 @@ class _DebtCategoryCardState extends ConsumerState<DebtCategoryCard> {
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8, vertical: 4),
-                          decoration: BoxDecoration(
-                            color: Color(widget.category.color)
-                                .withValues(alpha: 0.1),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Text(
-                            '€${stats['totalOwed']?.toStringAsFixed(0) ?? '0'}',
-                            style:
-                                Theme.of(context).textTheme.bodySmall?.copyWith(
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              l10n.totalOwed,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(
+                                    color: isDark
+                                        ? AppColors.darkTextSecondary
+                                        : AppColors.lightTextSecondary,
+                                  ),
+                            ),
+                            const SizedBox(height: 4),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8, vertical: 4),
+                              decoration: BoxDecoration(
+                                color: Color(widget.category.color)
+                                    .withValues(alpha: 0.08),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: Text(
+                                '€${totalOwed.toStringAsFixed(0)}',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodySmall
+                                    ?.copyWith(
                                       color: Color(widget.category.color),
                                       fontWeight: FontWeight.w600,
                                     ),
-                          ),
+                              ),
+                            ),
+                          ],
                         ),
                         const SizedBox(width: 8),
                         Icon(

@@ -366,7 +366,7 @@ class _ConversationHistoryDrawerState
                 children: [
                   Icon(Icons.open_in_new, size: 20),
                   const SizedBox(width: 8),
-                  Text('Open'),
+                Text(AppLocalizations.of(context)!.open),
                 ],
               ),
             ),
@@ -376,7 +376,10 @@ class _ConversationHistoryDrawerState
                 children: [
                   Icon(Icons.delete, color: AppColors.errorRose, size: 20),
                   const SizedBox(width: 8),
-                  Text('Delete', style: TextStyle(color: AppColors.errorRose)),
+                Text(
+                  AppLocalizations.of(context)!.delete,
+                  style: const TextStyle(color: AppColors.errorRose),
+                ),
                 ],
               ),
             ),
@@ -406,6 +409,7 @@ class _ConversationHistoryDrawerState
 
   List<Map<String, dynamic>> _groupConversationsByDay(
       List<Conversation> conversations) {
+    final l10n = AppLocalizations.of(context)!;
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);
     final yesterday = today.subtract(const Duration(days: 1));
@@ -423,13 +427,13 @@ class _ConversationHistoryDrawerState
 
       String dayLabel;
       if (conversationDate == today) {
-        dayLabel = 'Today';
+        dayLabel = l10n.today;
       } else if (conversationDate == yesterday) {
-        dayLabel = 'Yesterday';
+        dayLabel = l10n.yesterday;
       } else if (conversationDate.isAfter(thisWeek)) {
-        dayLabel = 'This Week';
+        dayLabel = l10n.thisWeek;
       } else if (conversationDate.isAfter(thisMonth)) {
-        dayLabel = 'This Month';
+        dayLabel = l10n.thisMonth;
       } else {
         dayLabel = DateFormat('MMMM yyyy').format(conversationDate);
       }
@@ -451,9 +455,16 @@ class _ConversationHistoryDrawerState
         .toList();
 
     sortedGroups.sort((a, b) {
-      final dayOrder = ['Today', 'Yesterday', 'This Week', 'This Month'];
-      final aIndex = dayOrder.indexOf(a['day'] as String);
-      final bIndex = dayOrder.indexOf(b['day'] as String);
+      final dayOrder = [
+        l10n.today,
+        l10n.yesterday,
+        l10n.thisWeek,
+        l10n.thisMonth,
+      ];
+      final aDay = a['day'] as String;
+      final bDay = b['day'] as String;
+      final aIndex = dayOrder.indexOf(aDay);
+      final bIndex = dayOrder.indexOf(bDay);
 
       if (aIndex != -1 && bIndex != -1) {
         return aIndex.compareTo(bIndex);
@@ -462,7 +473,7 @@ class _ConversationHistoryDrawerState
       } else if (bIndex != -1) {
         return 1;
       } else {
-        return (a['day'] as String).compareTo(b['day'] as String);
+        return aDay.compareTo(bDay);
       }
     });
 
@@ -470,7 +481,8 @@ class _ConversationHistoryDrawerState
   }
 
   String _generateTitle(Conversation conversation) {
-    if (conversation.messages.isEmpty) return 'Empty conversation';
+    final l10n = AppLocalizations.of(context)!;
+    if (conversation.messages.isEmpty) return l10n.untitledChat;
 
     final firstUserMessage = conversation.messages
         .where((m) => m.type == MessageType.user)
@@ -481,15 +493,16 @@ class _ConversationHistoryDrawerState
       return content.length > 50 ? '${content.substring(0, 50)}...' : content;
     }
 
-    return 'Conversation';
+    return l10n.untitledChat;
   }
 
   String _getTimeAgo(DateTime dateTime) {
+    final l10n = AppLocalizations.of(context)!;
     final now = DateTime.now();
     final difference = now.difference(dateTime);
 
     if (difference.inMinutes < 1) {
-      return 'Just now';
+      return l10n.justNow;
     } else if (difference.inMinutes < 60) {
       return '${difference.inMinutes}m ago';
     } else if (difference.inHours < 24) {
@@ -502,16 +515,16 @@ class _ConversationHistoryDrawerState
   }
 
   void _showDeleteConfirmation(Conversation conversation) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Delete Conversation'),
-        content: Text(
-            'Are you sure you want to delete "${conversation.title ?? _generateTitle(conversation)}"?'),
+        title: Text(l10n.deleteConversationTitle),
+        content: Text(l10n.deleteConversationMessage),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text('Cancel'),
+            child: Text(l10n.cancel),
           ),
           TextButton(
             onPressed: () {
@@ -521,7 +534,7 @@ class _ConversationHistoryDrawerState
               Navigator.of(context).pop();
             },
             style: TextButton.styleFrom(foregroundColor: AppColors.errorRose),
-            child: const Text('Delete'),
+            child: Text(l10n.delete),
           ),
         ],
       ),
@@ -529,16 +542,16 @@ class _ConversationHistoryDrawerState
   }
 
   void _showDeleteAllConfirmation() {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Delete All Conversations'),
-        content: const Text(
-            'Are you sure you want to delete all conversations? This action cannot be undone.'),
+        title: Text(l10n.deleteConversationTitle),
+        content: Text(l10n.deleteConversationMessage),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text('Cancel'),
+            child: Text(l10n.cancel),
           ),
           TextButton(
             onPressed: () {
@@ -553,7 +566,7 @@ class _ConversationHistoryDrawerState
               Navigator.of(context).pop();
             },
             style: TextButton.styleFrom(foregroundColor: AppColors.errorRose),
-            child: const Text('Delete All'),
+            child: Text(l10n.delete),
           ),
         ],
       ),

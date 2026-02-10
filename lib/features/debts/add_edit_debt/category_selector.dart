@@ -4,6 +4,7 @@ import 'package:pocketsage/providers/providers.dart';
 import 'package:pocketsage/data/models/debt_category.dart';
 import 'package:pocketsage/core/theme/theme.dart';
 import 'package:pocketsage/features/debts/category_details/quick_add_category_dialog.dart';
+import 'package:pocketsage/l10n/app_localizations.dart';
 
 class CategorySelector extends ConsumerStatefulWidget {
   final String? selectedCategoryId;
@@ -64,7 +65,7 @@ class _CategorySelectorState extends ConsumerState<CategorySelector> {
                   color: Color(DebtCategoryDefaults.uncategorizedColor),
                 ),
                 const SizedBox(width: 12),
-                Text('Uncategorized'),
+                Text(AppLocalizations.of(context)!.unknown),
                 const Spacer(),
                 if (widget.enabled)
                   IconButton(

@@ -38,35 +38,43 @@ class DebtSummaryCard extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _SummaryMetric(
-                label: l10n.totalAmountValue,
-                value: debt.totalAmount,
-                isDark: isDark,
-              ),
-              Container(
-                width: 1,
-                height: 40,
-                color: Colors.white.withValues(alpha: 0.3),
-              ),
-              _SummaryMetric(
-                label: l10n.paid,
-                value: debt.paidAmount,
-                isDark: isDark,
-              ),
-              Container(
-                width: 1,
-                height: 40,
-                color: Colors.white.withValues(alpha: 0.3),
-              ),
-              _SummaryMetric(
-                label: l10n.remaining,
-                value: debt.remainingAmount,
-                isDark: isDark,
-              ),
-            ],
+          IntrinsicHeight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Expanded(
+                  child: _SummaryMetric(
+                    label: l10n.totalAmountValue,
+                    value: debt.totalAmount,
+                    isDark: isDark,
+                  ),
+                ),
+                VerticalDivider(
+                  width: 24,
+                  thickness: 1,
+                  color: Colors.white.withValues(alpha: 0.3),
+                ),
+                Expanded(
+                  child: _SummaryMetric(
+                    label: l10n.paid,
+                    value: debt.paidAmount,
+                    isDark: isDark,
+                  ),
+                ),
+                VerticalDivider(
+                  width: 24,
+                  thickness: 1,
+                  color: Colors.white.withValues(alpha: 0.3),
+                ),
+                Expanded(
+                  child: _SummaryMetric(
+                    label: l10n.remaining,
+                    value: debt.remainingAmount,
+                    isDark: isDark,
+                  ),
+                ),
+              ],
+            ),
           ),
           if (debt.dueDate != null) ...[
             const SizedBox(height: 16),
@@ -115,20 +123,25 @@ class _SummaryMetric extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           label,
+          textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: Colors.white.withValues(alpha: 0.8),
               ),
         ),
         const SizedBox(height: 4),
-        Text(
-          '€${value.toStringAsFixed(2)}',
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                color: Colors.white,
-                fontWeight: FontWeight.w700,
-              ),
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            '€${value.toStringAsFixed(2)}',
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                ),
+          ),
         ),
       ],
     );

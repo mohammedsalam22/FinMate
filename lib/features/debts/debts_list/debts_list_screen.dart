@@ -160,12 +160,16 @@ class _MetricTile extends StatelessWidget {
                 ),
           ),
           const SizedBox(height: 6),
-          Text(
-            '€${amount.toStringAsFixed(2)}',
-            style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  color: isDark ? AppColors.darkText : Colors.white,
-                  fontWeight: FontWeight.w700,
-                ),
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            alignment: Alignment.centerLeft,
+            child: Text(
+              '€${amount.toStringAsFixed(2)}',
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    color: isDark ? AppColors.darkText : Colors.white,
+                    fontWeight: FontWeight.w700,
+                  ),
+            ),
           ),
         ],
       ),

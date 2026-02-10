@@ -157,6 +157,7 @@ class TransactionsListScreen extends ConsumerWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
+        heroTag: 'transactionsFab',
         onPressed: () => context.push('/add-transaction'),
         icon: const Icon(Icons.add),
         label: Text(l10n.add),

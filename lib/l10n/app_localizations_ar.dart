@@ -368,6 +368,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get yesterday => 'أمس';
 
   @override
+  String get thisWeek => 'هذا الأسبوع';
+
+  @override
+  String get thisMonth => 'هذا الشهر';
+
+  @override
   String get addTransaction => 'إضافة معاملة';
 
   @override
@@ -629,6 +635,26 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get untitledChat => 'محادثة بدون عنوان';
+
+  @override
+  String get open => 'فتح';
+
+  @override
+  String get justNow => 'الآن';
+
+  @override
+  String get deleteDebtTitle => 'حذف الدين؟';
+
+  @override
+  String get deletePaymentTitle => 'حذف الدفعة؟';
+
+  @override
+  String get deleteDebtMessage =>
+      'سيتم حذف هذا الدين وجميع سجلات الدفع الخاصة به نهائياً. لا يمكن التراجع عن هذا الإجراء.';
+
+  @override
+  String get deletePaymentMessage =>
+      'سيتم حذف سجل هذه الدفعة نهائياً. لا يمكن التراجع عن هذا الإجراء.';
 
   @override
   String get executingAction => 'تنفيذ الإجراء...';

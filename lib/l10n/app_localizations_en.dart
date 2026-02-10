@@ -371,6 +371,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get yesterday => 'Yesterday';
 
   @override
+  String get thisWeek => 'This Week';
+
+  @override
+  String get thisMonth => 'This Month';
+
+  @override
   String get addTransaction => 'Add Transaction';
 
   @override
@@ -635,6 +641,26 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get untitledChat => 'Untitled Chat';
+
+  @override
+  String get open => 'Open';
+
+  @override
+  String get justNow => 'Just now';
+
+  @override
+  String get deleteDebtTitle => 'Delete Debt?';
+
+  @override
+  String get deletePaymentTitle => 'Delete Payment?';
+
+  @override
+  String get deleteDebtMessage =>
+      'This will permanently delete this debt record and all its payment history. This action cannot be undone.';
+
+  @override
+  String get deletePaymentMessage =>
+      'This will permanently delete this payment record. This action cannot be undone.';
 
   @override
   String get executingAction => 'Executing action...';

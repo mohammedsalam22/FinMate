@@ -516,6 +516,14 @@
   "@yesterday": {
     "description": "Yesterday label"
   },
+  "thisWeek": "This Week",
+  "@thisWeek": {
+    "description": "This week label for grouped conversations"
+  },
+  "thisMonth": "This Month",
+  "@thisMonth": {
+    "description": "This month label for grouped conversations"
+  },
   "addTransaction": "Add Transaction",
   "@addTransaction": {
     "description": "Add transaction screen title"
@@ -878,6 +886,30 @@
   "untitledChat": "Untitled Chat",
   "@untitledChat": {
     "description": "Default title for untitled chat"
+  },
+  "open": "Open",
+  "@open": {
+    "description": "Open item label"
+  },
+  "justNow": "Just now",
+  "@justNow": {
+    "description": "Relative time label for seconds/minutes ago"
+  },
+  "deleteDebtTitle": "Delete Debt?",
+  "@deleteDebtTitle": {
+    "description": "Title for delete debt confirmation dialog"
+  },
+  "deletePaymentTitle": "Delete Payment?",
+  "@deletePaymentTitle": {
+    "description": "Title for delete payment confirmation dialog"
+  },
+  "deleteDebtMessage": "This will permanently delete this debt record and all its payment history. This action cannot be undone.",
+  "@deleteDebtMessage": {
+    "description": "Body text for delete debt confirmation dialog"
+  },
+  "deletePaymentMessage": "This will permanently delete this payment record. This action cannot be undone.",
+  "@deletePaymentMessage": {
+    "description": "Body text for delete payment confirmation dialog"
   },
   "executingAction": "Executing action...",
   "@executingAction": {

@@ -24,7 +24,11 @@ class PaymentsList extends ConsumerWidget {
                 child: ListTile(
                   leading: const Icon(Icons.payments),
                   title: Text('€${p.amount.toStringAsFixed(2)}'),
-                  subtitle: Text(DateFormat('MMM d, yyyy').format(p.date)),
+                  subtitle: Text(
+                    DateFormat.yMMMd(
+                            Localizations.localeOf(context).languageCode)
+                        .format(p.date),
+                  ),
                   trailing: IconButton(
                     icon: const Icon(Icons.delete_outline),
                     onPressed: () async {

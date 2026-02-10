@@ -170,6 +170,7 @@ class _AiChatScreenState extends ConsumerState<AiChatScreen> {
                 ),
                 const SizedBox(width: 8),
                 FloatingActionButton.small(
+                  heroTag: 'aiSendFab',
                   onPressed: _isLoading ? null : _sendMessage,
                   backgroundColor: _isLoading
                       ? (isDark

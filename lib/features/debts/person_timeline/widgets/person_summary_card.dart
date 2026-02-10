@@ -41,40 +41,48 @@ class PersonSummaryCard extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _SummaryMetric(
-                label: l10n.totalOwed,
-                value: totalOwed,
-                isDark: isDark,
-                color: Color(category.color),
-              ),
-              Container(
-                width: 1,
-                height: 40,
-                color: Color(category.color).withValues(alpha: 0.3),
-              ),
-              _SummaryMetric(
-                label: l10n.paid,
-                value: totalPaid,
-                isDark: isDark,
-                color: AppColors.successGreen,
-              ),
-              Container(
-                width: 1,
-                height: 40,
-                color: Color(category.color).withValues(alpha: 0.3),
-              ),
-              _SummaryMetric(
-                label: l10n.remaining,
-                value: totalRemaining,
-                isDark: isDark,
-                color: totalRemaining > 0
-                    ? AppColors.errorRose
-                    : AppColors.successGreen,
-              ),
-            ],
+          IntrinsicHeight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Expanded(
+                  child: _SummaryMetric(
+                    label: l10n.totalOwed,
+                    value: totalOwed,
+                    isDark: isDark,
+                    color: Color(category.color),
+                  ),
+                ),
+                VerticalDivider(
+                  width: 24,
+                  thickness: 1,
+                  color: Color(category.color).withValues(alpha: 0.3),
+                ),
+                Expanded(
+                  child: _SummaryMetric(
+                    label: l10n.paid,
+                    value: totalPaid,
+                    isDark: isDark,
+                    color: AppColors.successGreen,
+                  ),
+                ),
+                VerticalDivider(
+                  width: 24,
+                  thickness: 1,
+                  color: Color(category.color).withValues(alpha: 0.3),
+                ),
+                Expanded(
+                  child: _SummaryMetric(
+                    label: l10n.remaining,
+                    value: totalRemaining,
+                    isDark: isDark,
+                    color: totalRemaining > 0
+                        ? AppColors.errorRose
+                        : AppColors.successGreen,
+                  ),
+                ),
+              ],
+            ),
           ),
           const SizedBox(height: 16),
           Text(
@@ -106,20 +114,25 @@ class _SummaryMetric extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           label,
+          textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: color.withValues(alpha: 0.8),
               ),
         ),
         const SizedBox(height: 4),
-        Text(
-          '€${value.toStringAsFixed(2)}',
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                color: color,
-                fontWeight: FontWeight.w700,
-              ),
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            '€${value.toStringAsFixed(2)}',
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  color: color,
+                  fontWeight: FontWeight.w700,
+                ),
+          ),
         ),
       ],
     );
